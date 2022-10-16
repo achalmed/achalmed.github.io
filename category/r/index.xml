@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R | achalmaedison</title>
+    <link>https://achalmed.github.io/category/r/</link>
+      <atom:link href="https://achalmed.github.io/category/r/index.xml" rel="self" type="application/rss+xml" />
+    <description>R</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 16 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://achalmed.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>R</title>
+      <link>https://achalmed.github.io/category/r/</link>
+    </image>
+    
+    <item>
+      <title>poblacion municipal</title>
+      <link>https://achalmed.github.io/post/poblacion-municipal/</link>
+      <pubDate>Sun, 16 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://achalmed.github.io/post/poblacion-municipal/</guid>
+      <description>
+&lt;script src=&#34;https://achalmed.github.io/post/poblacion-municipal/index.en_files/clipboard/clipboard.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://achalmed.github.io/post/poblacion-municipal/index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://achalmed.github.io/post/poblacion-municipal/index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;window.xaringanExtraClipboard(null, {&#34;button&#34;:&#34;&lt;i class=\&#34;fa fa-clipboard\&#34;&gt;&lt;\/i&gt;&#34;,&#34;success&#34;:&#34;&lt;i class=\&#34;fa fa-check\&#34; style=\&#34;color: #90BE6D\&#34;&gt;&lt;\/i&gt;&#34;,&#34;error&#34;:&#34;Press Ctrl+C to Copy&#34;})&lt;/script&gt;
+&lt;link href=&#34;https://achalmed.github.io/post/poblacion-municipal/index.en_files/font-awesome/css/all.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;link href=&#34;https://achalmed.github.io/post/poblacion-municipal/index.en_files/font-awesome/css/v4-shims.css&#34; rel=&#34;stylesheet&#34; /&gt;
+
+
+&lt;p&gt;Siempre me ha gustado saber cuantos habitantes tiene mi pueblo y resulta que el 30 de diciembre de 2020 el INE publicó finalmente las cifras definitivas de &lt;a href=&#34;https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;amp;cid=1254736177011&amp;amp;menu=resultados&amp;amp;idp=1254734710990&#34;&gt;población municipal&lt;/a&gt; referentes a fecha 1 de enero de 2020, así que …&lt;/p&gt;
+&lt;div id=&#34;introducción&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Introducción&lt;/h2&gt;
+&lt;p&gt;Como señala el INE, la operación estadística “Cifras oficiales de población de los municipios españoles: Revisión del Padrón Municipal” publica con referencia a 1 de enero de cada año, la población por sexo a nivel municipal. &lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;El &lt;strong&gt;Padrón Municipal&lt;/strong&gt; es un registro administrativo donde constan los vecinos del municipio. Su formación, mantenimiento, revisión y custodia corresponde a los respectivos &lt;strong&gt;ayuntamientos&lt;/strong&gt;, quienes &lt;strong&gt;deben remitir al INE&lt;/strong&gt; las variaciones mensuales. El INE, realiza comprobaciones, subsana errores y duplicidades y obtiene para cada municipio la cifra de población. El Presidente del INE, con el informe favorable del Consejo de Empadronamiento, eleva al Gobierno la propuesta de cifras oficiales de población de los municipios españoles referidas a 1 de enero de cada año, para su aprobación mediante real decreto, &lt;strong&gt;declarando así como oficiales las cifras de población&lt;/strong&gt; resultantes de la revisión del Padrón municipal y procediendo a su publicación en el Boletín Oficial del Estado.&lt;/p&gt;
+&lt;p&gt;De forma que la cifra oficial de &lt;strong&gt;población en España a 1 de enero de 2020 fue de 47.450.795 personas&lt;/strong&gt;; es decir, 424.587 más que en 2019. Pero, ¿cómo está distribuida esa población por los 8.131 municipios españoles?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;datos&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Datos&lt;/h2&gt;
+&lt;p&gt;El INE ofrece &lt;a href=&#34;https://www.ine.es/dynt3/inebase/es/index.htm?padre=517&amp;amp;capsel=525&#34;&gt;aquí&lt;/a&gt;&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; los datos de población a nivel municipal. Los datos están en un archivo comprimido que contiene un fichero para cada año desde 1996, con la excepción de 1997, con la población de los municipios españoles (por genero) a 1 de enero de cada año.&lt;a href=&#34;#fn3&#34; class=&#34;footnote-ref&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Vamos al lio, hay que descargar, arreglar/limpiar y fusionar los distintos ficheros. El objetivo es tener los datos de todos los años en un único fichero. Esto yo ya lo había hecho hace tiempo, así que solo me ha tocado añadir los datos de 2020 y arreglar un poco el código.&lt;/p&gt;
+&lt;p&gt;La verdad es que, al menos para mi, no es fácil fusionar los 24 ficheros de población municipal que ofrece el INE. Hay algunas inconsistencias en los nombres de los ficheros y variables que no siempre es fácil detectar, pero bueno ya lo tengo hecho.&lt;a href=&#34;#fn4&#34; class=&#34;footnote-ref&#34; id=&#34;fnref4&#34;&gt;&lt;sup&gt;4&lt;/sup&gt;&lt;/a&gt;, &lt;a href=&#34;#fn5&#34; class=&#34;footnote-ref&#34; id=&#34;fnref5&#34;&gt;&lt;sup&gt;5&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Como nadie va a mirar mi código para ver cuales son esas inconsistencias a la hora de fusionar los ficheros, señalaré algunas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;los nombres de los ficheros no incorporan el año completo, por ejemplo: &lt;code&gt;pobmun03.xls&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;hay ficheros &lt;code&gt;.xls&lt;/code&gt; y &lt;code&gt;.xlsx&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Estas dos inconsistencias son menores y la segunda de ellas es lógico que ocurra, dado que hay datos de cuando el formato &lt;code&gt;.xlsx&lt;/code&gt; no existía&lt;a href=&#34;#fn6&#34; class=&#34;footnote-ref&#34; id=&#34;fnref6&#34;&gt;&lt;sup&gt;6&lt;/sup&gt;&lt;/a&gt;, pero dificultan el fusionar los ficheros de forma automática con código.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;generalmente los ficheros tienen una linea informativa antes de los datos, pero el fichero correspondiente a 1998 no tenía esa linea, y los ficheros de 2012 a 2015 y 2017 tenían dos lineas de cabecera.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;los ficheros de 2002, 2007 y 2009 tienen filas con los totales provinciales, cosa que no ocurre en el resto de años; ademas, el fichero de 2016 tiene una fila para el total de la población española.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Otra vez inconsistencias menores, que son totalmente lógicas, pero que dificultan la fusión de los archivos.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;en el fichero de 1998, el valor de la variable &lt;code&gt;CMUN&lt;/code&gt; tiene cuatro dígitos, cuando debería tener solo 3. Hay que quedarse con los 3 primeros dígitos, creo que el cuarto es el primer dígito de la variable DC, dígito de control. Se debió colar.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Todas son inconsistencias menores y un error tonto, pero dificultan mucho la fusión de los ficheros anuales con la población municipal en un único fichero. Vuelvo a reiterar que son errores menores: a ver cuantos fallos he cometido yo!!! espero que ninguno, pero recordad que yo lo hago a veces por gusto, a veces por motivos profesionales. En este caso realicé la fusión para tener un fichero de datos con los que trabajar en clase.&lt;/p&gt;
+&lt;div id=&#34;no-hay-otra-forma-de-obtener-los-datos-oficiales-de-población&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;¿No hay otra forma de obtener los datos oficiales de población?&lt;/h3&gt;
+&lt;p&gt;Sí, que yo sepa hay dos formas más:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Los &lt;a href=&#34;https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;amp;cid=1254736177012&amp;amp;menu=resultados&amp;amp;secc=1254736195462&amp;amp;idp=1254734710990#!tabs-1254736195462&#34;&gt;microdatos&lt;/a&gt; del Padrón Continuo. El INE provee un fichero .zip por año. Dentro del fichero .zip están los microdatos en varios formatos, incluyendo también un script para transformar los datos a formato R. Evidentemente los microdatos ofrecen más información: lugar de nacimiento y edad , pero por motivos de secreto estadístico se blanquea el municipio de residencia y nacimiento en los municipios de menos de 10.000 habitantes. Es decir, con los microdatos no podría saber cuantos habitantes tiene mi pueblo.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Un conjunto de tablas en formato &lt;code&gt;pcaxis&lt;/code&gt; con la población municipal por genero y alguna otra característica (edad y lugar de nacimiento desagregado y cruzado a varios niveles). Con estas tablas podría ver por ejemplo la composición por edad o nacionalidad de mi pueblo. El INE ofrece estas tablas en un fichero para el periodo 2015-2020 y un fichero individual para años anteriores. Seguro que lo haré!!&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;análisis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Análisis&lt;/h2&gt;
+&lt;p&gt;La verdad es que al fichero con la población municipal fusionada ya le he sacado provecho en clase. Es un fichero que suele gustar a los estudiantes: a todos nos gusta contar y saber los habitantes de nuestro pueblo, sobre todo al &lt;a href=&#34;https://www.youtube.com/watch?v=KZmLI7eYjmw&#34;&gt;Conde Draco&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Solo con los datos de población municipal no se pueden hacer, evidentemente, análisis complejos pero si sirven para ver algunas pautas en la población y su distribución territorial y también para contestar a muchas curiosidades como por ejemplo: ¿en qué provincias ha crecido más la población en la última década? o ¿cuantos municipios hay en España con más mujeres que hombres? Estos dos ejercicios solemos hacerlos en clase, así que aquí los replicaré en próximos posts.&lt;/p&gt;
+&lt;p&gt;Para cerrar este post presento un gráfico con las pautas, durante el periodo 2000-2020, del crecimiento de población en los municipios españoles. Como puede verse, buena parte del territorio experimenta reducciones de población. Los municipios que crecen por encima de la media española se concentran a lo largo de la costa mediterranea, en Baleares y Canarias, alrededores de Madrid y en menor medida el País Vasco. Asimismo, la mayoría de capitales provinciales o sus zonas limítrofes presentan crecimiento de población importantes. Por contra, como es bien sabido, las zonas del interior y alejadas de las capitales experimentan crecimientos negativos: &lt;a href=&#34;https://www.geografiainfinita.com/2019/03/un-recorrido-por-la-espana-olvidada-y-vaciada/&#34;&gt;la España vaciada&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#- quiero hacer un mapa con el crecimiento de la población en el periodo 2000-2020
+library(tidyverse)
+library(sf)
+
+# datos ----
+geo_muni &amp;lt;- readr::read_rds(&amp;quot;/home/pjpv/Escritorio/my_datos_2021/datos/geo_datos_mios/geo_muni_2020_LAU2_canarias.rds&amp;quot;)
+geo_prov &amp;lt;- readr::read_rds(&amp;quot;/home/pjpv/Escritorio/my_datos_2021/datos/geo_datos_mios/geo_prov_2020_LAU2_canarias.rds&amp;quot;)
+pob_2000_2020 &amp;lt;- readr::read_rds(&amp;quot;/home/pjpv/Escritorio/my_datos_2021/datos/INE/pob_mun/ine_pob_mun_1996_2020.rds&amp;quot;)
+geo_morocco &amp;lt;- rnaturalearth::ne_countries(scale = &amp;quot;medium&amp;quot;, returnclass = &amp;quot;sf&amp;quot;) %&amp;gt;% 
+               dplyr::filter(sovereignt %in% c(&amp;quot;Morocco&amp;quot;)) %&amp;gt;% select(sovereignt)
+
+#- crecimiento de la poblacon en España 2000-2020
+crec_esp &amp;lt;- pob_2000_2020 %&amp;gt;% 
+  filter(year %in% c(2000, 2020)) %&amp;gt;% 
+  filter(poblacion == &amp;quot;Total&amp;quot;) %&amp;gt;% 
+  select(year, values) %&amp;gt;% 
+  group_by(year) %&amp;gt;% 
+  summarise(habitantes = sum(values)) %&amp;gt;% 
+  mutate(crec_abs = habitantes - lag(habitantes)) %&amp;gt;% 
+  mutate(crec_percent = crec_abs /lag(habitantes)) %&amp;gt;% ungroup()
+media_crec_esp &amp;lt;-  crec_esp[[2,4]]*100
+#- calculo crecimiento 2000-20 -----
+pob_muni &amp;lt;- pob_2000_2020 %&amp;gt;% 
+  filter(year %in% c(2000, 2020)) %&amp;gt;% 
+  filter(poblacion == &amp;quot;Total&amp;quot;) %&amp;gt;% 
+  group_by(ine_muni, ine_muni.n, year) %&amp;gt;% 
+  mutate(habitantes = sum(values)) %&amp;gt;% 
+  select(ine_muni, ine_muni.n, capital_prov, ine_prov, ine_prov.n, ine_ccaa, ine_ccaa.n, year, habitantes) %&amp;gt;%
+  distinct() %&amp;gt;% 
+  pivot_wider(names_from = c(&amp;quot;year&amp;quot;), values_from = c(&amp;quot;habitantes&amp;quot;)) %&amp;gt;% 
+  mutate(crec_2020_2000 = `2020`- `2000`) %&amp;gt;% 
+  mutate(crec_porcentual = (`2020`- `2000`) / `2000` *100) %&amp;gt;% 
+  arrange(desc(crec_porcentual)) %&amp;gt;% ungroup() %&amp;gt;% 
+  mutate(crec_porcentual.n = paste0(round(crec_porcentual, digits = 1), &amp;quot;%&amp;quot;)) %&amp;gt;% 
+  mutate(crec_porcentual_d = as_factor(case_when(
+    crec_porcentual &amp;lt; 0 ~ &amp;quot;Negativo&amp;quot;,
+    between(crec_porcentual, 0, media_crec_esp) ~ &amp;quot;&amp;lt; media&amp;quot;,
+    crec_porcentual &amp;gt; media_crec_esp ~ &amp;quot;&amp;gt; media&amp;quot;)))
+pob_muni &amp;lt;- pob_muni %&amp;gt;% mutate(crec_porcentual_d = fct_relevel(crec_porcentual_d, &amp;quot;Negativo&amp;quot;, &amp;quot;&amp;lt; media&amp;quot;))
+
+#- theme -----------------
+my_theme_maps &amp;lt;- theme_minimal() + theme(
+  text = element_text(family = &amp;quot;Ubuntu Regular&amp;quot;, color = &amp;quot;#22211d&amp;quot;),
+  axis.line = element_blank(),
+  axis.text.x = element_blank(),
+  axis.text.y = element_blank(),
+  axis.ticks = element_blank(),
+  axis.title.x = element_blank(),
+  axis.title.y = element_blank(),
+  # panel.grid.minor = element_line(color = &amp;quot;#ebebe5&amp;quot;, size = 0.2),
+  panel.grid.major = element_line(color = NA, size = 0.2), #- &amp;quot;#ebebe5&amp;quot;
+  panel.grid.minor = element_blank(),
+  plot.background = element_rect(fill = &amp;quot;#f5f5f2&amp;quot;, color = NA), 
+  panel.background = element_rect(fill = &amp;quot;#f5f5f2&amp;quot;, color = NA), 
+  legend.background = element_rect(fill = &amp;quot;#f5f5f2&amp;quot;, color = NA),
+  panel.border = element_blank(),
+  strip.text.x = element_blank(),
+  strip.background = element_rect(colour=&amp;quot;white&amp;quot;, fill=&amp;quot;white&amp;quot;),
+  legend.position = c(.9,.2),
+  plot.title = element_text(size = 16, face = &amp;quot;bold&amp;quot;)  )
+
+#- decido q geometrías uso ----
+my_geo &amp;lt;- geo_muni #- AQUI-AQUI
+my_geo &amp;lt;- inner_join(my_geo, pob_muni)  #- AQUI-AQUI
+my_canarias &amp;lt;- my_geo %&amp;gt;% 
+  filter(ine_ccaa == &amp;quot;05&amp;quot;) #- solo para el cuadrito, no para las geo
+ceuta &amp;lt;- my_geo %&amp;gt;% filter(ine_ccaa %in% c(18,19))
+capitales &amp;lt;- pob_muni %&amp;gt;% 
+  filter(capital_prov == &amp;quot;Sí&amp;quot;) %&amp;gt;% 
+  left_join(. , st_drop_geometry(geo_muni)) %&amp;gt;% 
+  mutate(capital_prov.2 = ifelse(capital_prov == &amp;quot;Sí&amp;quot;, &amp;quot;Capital provincial&amp;quot;, &amp;quot;NO&amp;quot;))
+
+#- elección de variables q grafíco ----
+my_vv &amp;lt;- expr(crec_porcentual_d)  #- AQUI-AQUI   (para la leyenda)
+my_vv_2 &amp;lt;- expr(crec_porcentual.n)  #- AQUI-AQUI  para el label text
+
+#janitor::tabyl(pob_muni, crec_porcentual_d)
+
+#- Plot con labels
+p &amp;lt;- ggplot() + 
+  geom_sf(data = geo_morocco, aes(geometry = geometry)) +
+  geom_sf(data = my_geo, aes(geometry = geometry, fill = !!my_vv), color = NA ) + 
+  geom_point(data = capitales, aes(x = X, y = Y, color = capital_prov.2)) +
+  geom_text(data = ceuta, aes(x = X1, y = Y1, label = !!my_vv_2), #- v. continua
+            color = &amp;quot;black&amp;quot;,  
+            check_overlap = TRUE, size = 3) + #- fontface = &amp;quot;bold&amp;quot;
+  geom_sf(data = geo_prov, aes(geometry = geometry, fill = NA )) + 
+  coord_sf(xlim = c(st_bbox(my_geo)[1]-0.2, st_bbox(my_geo)[3]+0.3), 
+           ylim = c(st_bbox(my_geo)[2]-0.1, st_bbox(my_geo)[4]+0.3), expand = FALSE) + 
+  geom_rect(aes(xmin = st_bbox(my_canarias)[1]-2.5, xmax = st_bbox(my_canarias)[3]+0.1, 
+                ymin = st_bbox(my_canarias)[2]-2.5, ymax = st_bbox(my_canarias)[4]+0.1), 
+            fill = NA, colour = &amp;quot;black&amp;quot;, size = 0.3, show.legend = FALSE, linejoin= &amp;quot;round&amp;quot;, linetype = 2) +
+  scale_color_manual(name = NULL,  values = c(&amp;quot;black&amp;quot;)) +
+  scale_fill_manual(name = NULL,  values = c(&amp;quot;#ee3b3b&amp;quot;, &amp;quot;#8ee5ee&amp;quot;,  &amp;quot;#9acd32&amp;quot;)) +
+  labs(title = &amp;quot;Crecimiento de la población municipal: 2000-2020&amp;quot;,
+       subtitle = my_subtitle, x = &amp;quot;&amp;quot;, y = &amp;quot;&amp;quot;,
+       caption = &amp;quot;Datos de población del INE. Geometrías del paquete LAU2boundaries4spain. Visualización: @pjpv4444&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;imagenes/2021_02_10_poblacion_municipal_01.png&#34; width=&#34;70%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes footnotes-end-of-document&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Las series comienzan en el año 1996, punto de arranque del actual sistema de gestión padronal y cuyas cifras van referidas al 1 de mayo siendo la Revisión a 1 de enero de 1998 la primera actualización en llevarse a cabo de acuerdo a este sistema.&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;El enlace de descarga es &lt;a href=&#34;https://www.ine.es/pob_xls/pobmun.zip&#34;&gt;este&lt;/a&gt;&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;El fichero de 1996 tiene las cifras de población referenciadas a 1 de mayo&lt;a href=&#34;#fnref3&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn4&#34;&gt;&lt;p&gt;La verdad es que cuando estás arreglando un dataset y ves fallos tontos o inconsistencias que te van dificultando el proceso, maldices y juras como 100 veces en arameo, pero ninguna crítica al INE. Entiendo que intentan hacer las cosas lo mejor que pueden con sus restricciones de tiempo, personal etc … y que tienen sus propios objetivos y su propia historia: en 1998, fecha de cuando datan algunos de los archivos, no se tenían ni los mismos conocimientos, ni herramientas, ni forma de trabajar etc… etc…. Además, cualquiera que vea mi código puede pensar lo mismo de mi, que no soy consistente etc … pues sí, lo hago como sé y puedo con el tiempo que le quiero dedicar.&lt;a href=&#34;#fnref4&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn5&#34;&gt;&lt;p&gt;De verdad, ninguna crítica al INE, pero quizás sí que el INE debería crear, igual ya existe, algún canal para hacer sugerencias para favorecer la usabilidad de los datos. Para un usuario medio creo que no es fácil fusionar estos datos ni detectar las inconsistencias para fusionarlos, así que mi petición al INE consistiría en que ofreciese, además de los ficheros tal y como están ahora, no tocarlos por favor, un enlace para descargar los ficheros ya fusionados&lt;a href=&#34;#fnref5&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn6&#34;&gt;&lt;p&gt;El formato &lt;code&gt;.xlsx&lt;/code&gt; apareció en 2007, pero el fichero INE con los datos de 1996 sí está en ese formato; sin embargo los de 1998 hasta 2013 están en formato &lt;code&gt;.xls&lt;/code&gt;&lt;a href=&#34;#fnref6&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hello R Markdown</title>
+      <link>https://achalmed.github.io/post/2020-12-01-r-rmarkdown/</link>
+      <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
+      <guid>https://achalmed.github.io/post/2020-12-01-r-rmarkdown/</guid>
+      <description>
+
+
+&lt;div id=&#34;r-markdown&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;R Markdown&lt;/h1&gt;
+&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; class=&#34;uri&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can embed an R code chunk like this:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(cars)
+##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00
+fit &amp;lt;- lm(dist ~ speed, data = cars)
+fit
+## 
+## Call:
+## lm(formula = dist ~ speed, data = cars)
+## 
+## Coefficients:
+## (Intercept)        speed  
+##     -17.579        3.932&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;including-plots&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Including Plots&lt;/h1&gt;
+&lt;p&gt;You can also embed plots. See Figure &lt;a href=&#34;#fig:pie&#34;&gt;1&lt;/a&gt; for example:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar = c(0, 1, 0, 1))
+pie(
+  c(280, 60, 20),
+  c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),
+  col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),
+  init.angle = -50, border = NA
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span style=&#34;display:block;&#34; id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://achalmed.github.io/post/2020-12-01-r-rmarkdown/index.en_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: A fancy pie chart.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
