@@ -5,12 +5,79 @@
     <link>https://achalmed.github.io/post/</link>
       <atom:link href="https://achalmed.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 20 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 21 Oct 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://achalmed.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Posts</title>
       <link>https://achalmed.github.io/post/</link>
     </image>
+    
+    <item>
+      <title>seguimos-con-el-padron-continuo</title>
+      <link>https://achalmed.github.io/post/seguimos-con-el-padron-continuo/</link>
+      <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://achalmed.github.io/post/seguimos-con-el-padron-continuo/</guid>
+      <description>
+&lt;script src=&#34;https://achalmed.github.io/post/seguimos-con-el-padron-continuo/index.en_files/clipboard/clipboard.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://achalmed.github.io/post/seguimos-con-el-padron-continuo/index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://achalmed.github.io/post/seguimos-con-el-padron-continuo/index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;window.xaringanExtraClipboard(null, {&#34;button&#34;:&#34;&lt;i class=\&#34;fa fa-clipboard\&#34;&gt;&lt;\/i&gt;&#34;,&#34;success&#34;:&#34;&lt;i class=\&#34;fa fa-check\&#34; style=\&#34;color: #90BE6D\&#34;&gt;&lt;\/i&gt;&#34;,&#34;error&#34;:&#34;Press Ctrl+C to Copy&#34;})&lt;/script&gt;
+&lt;link href=&#34;https://achalmed.github.io/post/seguimos-con-el-padron-continuo/index.en_files/font-awesome/css/all.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;link href=&#34;https://achalmed.github.io/post/seguimos-con-el-padron-continuo/index.en_files/font-awesome/css/v4-shims.css&#34; rel=&#34;stylesheet&#34; /&gt;
+
+
+&lt;div id=&#34;intromotivación&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Intro/motivación&lt;/h2&gt;
+&lt;p&gt;Llevo unos días, desde que empece el blog, jugando y trasteando con datos del Padrón continuo, y todo indica que seguiré unos días más, quiero procesar 2/3 tablas más y así poder hacer análisis tan importantes como ver que municipios/provincias tienen más mujeres que hombres o ver que municipios/provincias son más “cerrados”, en el sentido de que un mayor porcentaje de su población vive en el mismo municipio en el que nació. Seguramente también veré que municipios/regiones tienen una población más joven.&lt;/p&gt;
+&lt;p&gt;Parece un poco de obsesión por datos de población, igual tenía que haber sido demógrafo, pero es que en clase suelo utilizar este tipo de datos para enseñar R. Son datos sencillos de entender y una forma fácil de empezar con R, así que, ahora que tengo más o menos claro qué es y qué datos hay en el Padrón continuo, voy a documentarlo para poder usarlo el año que viene.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;padrón-continuo&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Padrón continuo&lt;/h2&gt;
+&lt;p&gt;En España, cada municipio tiene un registro conocido como el &lt;strong&gt;Padrón municipal de habitantes&lt;/strong&gt; donde constan los vecinos del municipio. Cuando una persona se inscribe en el padrón de su municipio debe aportar obligatoriamente estos datos: nombre y apellidos, género, domicilio habitual, nacionalidad, lugar y fecha de nacimiento, DNI o similar para no nacionales. El Padrón es un registro importante ya que, por ejemplo, a partir de él se confeccionan los censos electorales y las cifras oficiales de población.&lt;/p&gt;
+&lt;p&gt;Hasta el 1 de mayo de 1996, el padrón municipal de España se renovaba cada cinco años. Desde entonces se transforma en padrón continuo. Los ayuntamientos deben remitir mensualmente al INE los cambios en el registro de habitantes; es decir, el INE coordina los registros de todos los municipios. A partir de estos datos, el INE confecciona la &lt;strong&gt;Estadística del Padrón continuo&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Dentro de esta operación estadística el INE publica dos conjuntos de datos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Los &lt;a href=&#34;https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;amp;cid=1254736177012&amp;amp;menu=resultados&amp;amp;secc=1254736195462&amp;amp;idp=1254734710990#!tabs-1254736195462&#34;&gt;microdatos&lt;/a&gt; del Padrón Continuo. El INE provee un fichero .zip por año. Dentro del fichero .zip están los microdatos en varios formatos, incluyendo también un script para transformar los datos a formato R. Por motivos de secreto estadístico se blanquea el municipio de residencia y nacimiento en los municipios de menos de 10.000 habitantes. Es decir, con los microdatos no podría saber cuantos habitantes tiene mi pueblo, tuve que irme al Nomenclator, pero podría ver cosas como ¿cuantas personas nacidas en Madrid están viviendo actualmente en Teruel?&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Un &lt;a href=&#34;https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;amp;cid=1254736177012&amp;amp;menu=resultados&amp;amp;secc=1254736195462&amp;amp;idp=1254734710990#!tabs-1254736195461&#34;&gt;conjunto de tablas&lt;/a&gt; con distintos niveles de desagregación y horizontes temporales con parte de la información que aparecen en los microdatos.&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;más-estadísticas-relacionadas-con-el-padrón&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Más estadísticas relacionadas con el Padrón&lt;/h2&gt;
+&lt;p&gt;Además, partiendo de los datos del Padrón continuo, el INE ofrece una &lt;a href=&#34;https://www.ine.es/dyngs/INEbase/es/categoria.htm?c=Estadistica_P&amp;amp;cid=1254734710984&#34;&gt;serie de estadísticas&lt;/a&gt; como:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Cifras oficiales de población de los municipios españoles&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Nomenclátor&lt;a href=&#34;#fn3&#34; class=&#34;footnote-ref&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt;&lt;br /&gt;
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Relación de municipios y sus códigos por provincias &lt;a href=&#34;#fn4&#34; class=&#34;footnote-ref&#34; id=&#34;fnref4&#34;&gt;&lt;sup&gt;4&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Estadística de variaciones residenciales&lt;a href=&#34;#fn5&#34; class=&#34;footnote-ref&#34; id=&#34;fnref5&#34;&gt;&lt;sup&gt;5&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Estadística del Padrón de españoles residentes en el extranjero&lt;a href=&#34;#fn6&#34; class=&#34;footnote-ref&#34; id=&#34;fnref6&#34;&gt;&lt;sup&gt;6&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Apellidos y nombres más frecuentes&lt;a href=&#34;#fn7&#34; class=&#34;footnote-ref&#34; id=&#34;fnref7&#34;&gt;&lt;sup&gt;7&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;más-detalles-sobre-las-tablas-del-padrón-continuo&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Más detalles sobre las tablas del Padrón continuo&lt;/h2&gt;
+&lt;p&gt;Bueno, volvamos a la &lt;a href=&#34;https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;amp;cid=1254736177012&amp;amp;menu=ultiDatos&amp;amp;idp=1254734710990&#34;&gt;Estadística del Padrón continuo.&lt;/a&gt;. Ya he comentado que el INE ofrece un conjunto amplio de tablas con datos parciales del Padrón para distintos niveles de desagregación y horizontes temporales. Las tablas que más me interesan son las tablas con información a nivel municipal, y censal. Para clase y el blog procesaré los datos con detalle municipal.&lt;/p&gt;
+&lt;p&gt;Hay seis tablas. Veámoslas:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;imagenes/tablas_padron_municipios.png&#34; width=&#34;70%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;El INE ofrece cada una de estas 6 tablas en un fichero para el periodo 2015-2020 y un fichero individual para años anteriores.&lt;/p&gt;
+&lt;p&gt;De las 6 tablas, procesaré la tercera, la quinta y la sexta. Con los datos de la quinta tabla veré que municipios/provincias son más cerradas, en el sentido de que un mayor porcentaje de su población vive en el mismo municipio en el que nació. Con los datos de la sexta tabla, seguramente también veré que municipios/regiones tienen una población más joven y/o más centenarios. Todo jugar. Con los datos de cualquiera de las tablas puedo replicar uno de los análisis que ya hicimos en clase: ver en que municipios/provincias hay más mujeres que hombres. Ya lo hicimos en clase el curso pasado y salía algún resultado curioso.&lt;/p&gt;
+&lt;p&gt;Para las secciones censales hay disponibles también seis tablas. Son muy parecidas a las que hay para los municipios, pero se centran más en la nacionalidad, además cada año tiene su propio fichero y sólo están disponibles en formato PC-Axis, mientras que las de municipios se pueden descargar en varios formatos.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;imagenes/tablas_padron_secciones.png&#34; width=&#34;70%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes footnotes-end-of-document&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Más abajo hablo de las tablas que me interesan y que utilizaré en varios posts más.&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Estos son los datos que he utilizado en el segundo y cuarto post, donde veía en que municipios y provincias había crecido más la población durante el periodo 2000-2020&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;Utilice estos datos en el tercer post cuando puede ver la evolución habitantes de mi pueblo&lt;a href=&#34;#fnref3&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn4&#34;&gt;&lt;p&gt;Utilice estos datos en el primer post, cuando descubrimos que existía Aliaga del Lagarto. Lo siento Pili!!! 😇 🤣 🦎🦎 🤣&lt;a href=&#34;#fnref4&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn5&#34;&gt;&lt;p&gt;Por si algún día quiero saber cuantas personas nacidas en Burgos residen actualmente en Teruel&lt;a href=&#34;#fnref5&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn6&#34;&gt;&lt;p&gt;Seguro que le echo un vistazo cuando salgan los nuevos datos el 18 de marzo&lt;a href=&#34;#fnref6&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn7&#34;&gt;&lt;p&gt;En uno de los trabajos que los estudiantes elaboraron este curso, utilizaron estos datos. El trabajo está &lt;a href=&#34;https://dasdfg098.github.io/trabajo_BigData_equipo/&#34;&gt;aquí&lt;/a&gt; y el repo &lt;a href=&#34;https://github.com/dasdfg098/trabajo_BigData_equipo&#34;&gt;aquí&lt;/a&gt;&lt;a href=&#34;#fnref7&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>crecimiento-de-la-poblacion-por-provincias-2000-2020</title>
