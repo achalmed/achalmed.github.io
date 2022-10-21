@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>municipo | achalma edison</title>
+    <link>https://achalmed.github.io/category/municipo/</link>
+      <atom:link href="https://achalmed.github.io/category/municipo/index.xml" rel="self" type="application/rss+xml" />
+    <description>municipo</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 20 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://achalmed.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>municipo</title>
+      <link>https://achalmed.github.io/category/municipo/</link>
+    </image>
+    
+    <item>
+      <title>Nomenclator-municipio-pueblo-o-entidad</title>
+      <link>https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/</link>
+      <pubDate>Thu, 20 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/</guid>
+      <description>
+&lt;script src=&#34;https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/index.en_files/clipboard/clipboard.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;window.xaringanExtraClipboard(null, {&#34;button&#34;:&#34;&lt;i class=\&#34;fa fa-clipboard\&#34;&gt;&lt;\/i&gt;&#34;,&#34;success&#34;:&#34;&lt;i class=\&#34;fa fa-check\&#34; style=\&#34;color: #90BE6D\&#34;&gt;&lt;\/i&gt;&#34;,&#34;error&#34;:&#34;Press Ctrl+C to Copy&#34;})&lt;/script&gt;
+&lt;link href=&#34;https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/index.en_files/font-awesome/css/all.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;link href=&#34;https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/index.en_files/font-awesome/css/v4-shims.css&#34; rel=&#34;stylesheet&#34; /&gt;
+
+
+&lt;div id=&#34;nomenclator-del-ine&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Nomenclator del INE&lt;/h2&gt;
+&lt;p&gt;En este post voy a hablar de otra operación estadística del INE: el Nomenclator. ¿Que por qué me interesa el Nomenclator? Pues porque quiero saber cuantos habitantes tiene mi pueblo. Mi pueblo es &lt;a href=&#34;https://es.wikipedia.org/wiki/Pancrudo&#34;&gt;Pancrudo&lt;/a&gt;, pero en realidad la palabra pueblo, que mucha gente emplea para referirse a una localidad con pocos habitantes, es según la &lt;a href=&#34;https://es.wikipedia.org/wiki/Pueblo&#34;&gt;Wikipedia&lt;/a&gt;, un término ambiguo.&lt;/p&gt;
+&lt;p&gt;El INE no ofrece datos ni para pueblos ni para localidades, el INE ofrece datos de población para &lt;a href=&#34;https://es.wikipedia.org/wiki/Municipio&#34;&gt;municipios&lt;/a&gt;. Perfecto, porque en el post anterior arreglaste los datos de población para municipios. Es verdad, pero a pesar de que sí que existe el municipio de Pancrudo, mi pueblo, no es un municipio. Trato de explicarlo.&lt;/p&gt;
+&lt;p&gt;Existe el municipio de &lt;a href=&#34;https://es.wikipedia.org/wiki/Pancrudo&#34;&gt;Pancrudo&lt;/a&gt;, sí, pero está compuesto de 4 localidades o pueblos: &lt;a href=&#34;https://es.wikipedia.org/wiki/Cervera_del_Rinc%C3%B3n&#34;&gt;Cervera del Rincón&lt;/a&gt;, &lt;a href=&#34;https://es.wikipedia.org/wiki/Cuevas_de_Portalrubio&#34;&gt;Cuevas de Portalrubio&lt;/a&gt;, &lt;a href=&#34;https://es.wikipedia.org/wiki/Portalrubio&#34;&gt;Portalrubio&lt;/a&gt; y Pancrudo. Es decir, mi pueblo (Pancrudo) es una de las 4 localidades o pueblos del municipio también llamado Pancrudo. Un poco de lío!!&lt;/p&gt;
+&lt;p&gt;Por lo tanto, si quiero saber cuantos habitantes tiene mi pueblo no me vale con los datos que utilicé en el post anterior, tengo que ir al Nomenclator del INE. Como podemos leer &lt;a href=&#34;https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;amp;cid=1254736177010&amp;amp;menu=resultados&amp;amp;idp=1254734710990&#34;&gt;aquí&lt;/a&gt;, El Nomenclátor&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; contiene la relación detallada de las entidades y núcleos de población existentes a 1 de enero en cada municipio, así como su población. Perfecto, parece que en el Nomenclator sí que aparecerá la población de mi pueblo. En realidad el Nomenclator no utiliza el término pueblo sino que para el Nomenclator mi pueblo será una entidad o núcleo de población. Bueno eso me da igual, vamos a por los datos.&lt;/p&gt;
+&lt;p&gt;La verdad es que me complico las cosas, con lo fácil que es buscar en El INE los habitantes de un &lt;strong&gt;municipio&lt;/strong&gt; en los diferentes censos. Por ejemplo, &lt;a href=&#34;https://www.ine.es/intercensal/intercensal.do?search=1&amp;amp;error1=Debe+introducir+un+nombre+de+municipio.&amp;amp;error2=Debe+introducir+al+menos+3+caracteres.&amp;amp;cmbTipoBusq=0&amp;amp;textoMunicipio=Pancrudo&amp;amp;btnBuscarDenom=Consultar+selecci%C3%B3n&#34;&gt;aquí&lt;/a&gt; está la búsqueda para el &lt;strong&gt;municipio&lt;/strong&gt; de Pancrudo. En las notas al pie de la tabla nos dice que en el censo de 1970 el municipio de Pancrudo ya incorpora a Cervera y Cuevas, y que en el censo de 1981 se incorpora Portalrubio. Viendo los datos de la tabla se aprecia que, al menos para Pancrudo, el fenómeno de la progresiva despoblación de la España rural parece empezar en los 60. Los demógrafos dirán!!&lt;/p&gt;
+&lt;div id=&#34;los-datos&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Los datos&lt;/h3&gt;
+&lt;p&gt;Los datos del Nomenclator están &lt;a href=&#34;https://www.ine.es/nomen2/ficheros.do&#34;&gt;aquí&lt;/a&gt;. El INE ofrece un fichero .zip para cada año desde 2010 a 2020. Dentro del .zip hay 2 ficheros&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; con la misma información: el código, el nombre y la población total y por genero de cada entidad o núcleo de población.&lt;/p&gt;
+&lt;p&gt;En el diseño de registro del Nomenclator puede verse que el código de las entidades tiene 11 dígitos: los 2 primeros se corresponden con el código provincial y los 3 siguientes con el código del municipio; es decir, los 5 primeros dígitos identifican a que municipio pertenece cada entidad.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;imagenes/nomenclator_ine_disenyo_registro.png&#34; width=&#34;70%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Se aprecia que, además de &lt;a href=&#34;https://es.wikipedia.org/wiki/Municipio&#34;&gt;municipios&lt;/a&gt;, en el Nomenclator hay &lt;a href=&#34;https://es.wikipedia.org/wiki/Entidad_colectiva_de_poblaci%C3%B3n&#34;&gt;entidades colectivas&lt;/a&gt;, &lt;a href=&#34;https://es.wikipedia.org/wiki/Entidad_singular_de_poblaci%C3%B3n&#34;&gt;entidades singulares&lt;/a&gt;, &lt;a href=&#34;https://es.wikipedia.org/wiki/N%C3%BAcleo_de_poblaci%C3%B3n&#34;&gt;nucleos&lt;/a&gt; y &lt;a href=&#34;https://es.wikipedia.org/wiki/Diseminado&#34;&gt;diseminados&lt;/a&gt;. Como veis no es que sea fácil-fácil entender los pormenores de estas categorías. Como ejemplo, claro y diáfano al menos para mi: mi pueblo, Pancrudo, es una entidad singular y un núcleo que pertenece al municipio de Pancrudo. Portalrubio, otro pueblo, es otra entidad singular y núcleo del municipio de Pancrudo. Lo mismo ocurre para Cervera del Rincón y Cuevas de Portalrubio. En el municipio de Pancrudo no hay entidades colectivas ni diseminados.&lt;/p&gt;
+&lt;p&gt;La verdad es que el procesado de los 11 ficheros me costó un poquito: menos mal que medio me gusta y me “relaja”.&lt;a href=&#34;#fn3&#34; class=&#34;footnote-ref&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;habitantes-de-mi-pueblo&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Habitantes de mi pueblo&lt;/h3&gt;
+&lt;p&gt;Ahora que he procesado los datos del Nomenclator, ya puedo hacer un gráfico con la evolución de los habitantes de mi pueblo y ya que me pongo la hago de los cuatro pueblos del municipio de Pancrudo.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+nomenclator &amp;lt;- readr::read_csv(&amp;quot;/home/pjpv/Escritorio/my_datos_2021/datos/INE/nomenclator/ine_nomenclator_2010_2020.csv&amp;quot;)
+
+pancrudo &amp;lt;- nomenclator %&amp;gt;% filter(ine_muni.n == &amp;quot;Pancrudo&amp;quot;) %&amp;gt;% 
+  filter(tipo == &amp;quot;Entidad singular&amp;quot;) %&amp;gt;% 
+  filter(poblacion == &amp;quot;Total&amp;quot;) %&amp;gt;% 
+  mutate(year1 = as.character(year)) %&amp;gt;% 
+  mutate(name = as_factor(case_when(
+    name == &amp;quot;PANCRUDO&amp;quot; ~ &amp;quot;Pancrudo&amp;quot;,
+    name %in% c(&amp;quot;CERVERA DEL RINCON&amp;quot;, &amp;quot;CERVERA DEL RINCÓN&amp;quot;) ~ &amp;quot;Cervera del Rincón&amp;quot;,
+    name == &amp;quot;PORTALRUBIO&amp;quot; ~ &amp;quot;Portalrubio&amp;quot;,
+    name == &amp;quot;CUEVAS DE PORTALRUBIO&amp;quot; ~ &amp;quot;Cuevas de Portalrubio&amp;quot;))) %&amp;gt;% 
+  mutate(name = fct_relevel(name, c(&amp;quot;Pancrudo&amp;quot;, &amp;quot;Portalrubio&amp;quot;, &amp;quot;Cervera del Rincón&amp;quot;, &amp;quot;Cuevas de Portalrubio&amp;quot;)))
+
+pancrudo_2020 &amp;lt;- pancrudo %&amp;gt;% filter(year == 2020) %&amp;gt;% select(year, year1, name, values)
+
+p &amp;lt;- ggplot() + 
+  #geom_point(data = pancrudo, aes(x = year1, y = values, color = name)) +
+  geom_line(data = pancrudo, aes(x = year1, y = values, color = name, group = name), size = 1.5) +
+  geom_label(data = pancrudo, aes(x = year1, y = values, label = values)) +
+  #geom_text(data = pancrudo_2020, aes( x = year1, y = values,label = name), nudge_x = 1, check_overlap = TRUE, hjust = 0.5) +
+  scale_color_manual(name = NULL,  values = c(&amp;quot;blueviolet&amp;quot;, &amp;quot;deeppink2&amp;quot;, &amp;quot;cadetblue4&amp;quot;, &amp;quot;brown1&amp;quot;)) +
+  labs(title = &amp;quot;Evolución de la población de los 4 pueblos del municipio de Pancrudo&amp;quot;,
+       subtitle = &amp;quot;&amp;quot;,
+       x = NULL,
+       y = &amp;quot;Habitantes&amp;quot;,
+       caption = &amp;quot;Datos de población del Nomenclator del INE.Visualización: @pjpv4444&amp;quot;, 
+       color = NULL) +
+  theme(plot.title = element_text(size = 16, face = &amp;quot;bold&amp;quot;),
+        legend.position = &amp;quot;none&amp;quot;) +
+  annotate(geom = &amp;quot;text&amp;quot;, x = 11.75, y = 81.2, label =&amp;quot;Pancrudo&amp;quot;, color = &amp;quot;black&amp;quot;, size = 5) +
+  annotate(geom = &amp;quot;text&amp;quot;, x = 11.75, y = 18.5, label =&amp;quot;Portalrubio&amp;quot;, color = &amp;quot;black&amp;quot;, size = 5) +
+  annotate(geom = &amp;quot;text&amp;quot;, x = 12.135, y = 13.2, label =&amp;quot;Cervera del Rincón&amp;quot;, color = &amp;quot;black&amp;quot;, size = 5) +
+  annotate(geom = &amp;quot;text&amp;quot;, x = 12.24, y = 6.8, label =&amp;quot;Cuevas de Portalrubio&amp;quot;, color = &amp;quot;black&amp;quot;, size = 5) +
+  scale_x_discrete(expand = expansion(mult = c(0.04, .225))) +
+  theme_minimal() + theme(plot.title = element_text(size = 16, face = &amp;quot;bold&amp;quot;),
+    legend.position = &amp;quot;none&amp;quot;,
+    text = element_text(family = &amp;quot;Ubuntu Regular&amp;quot;, color = &amp;quot;#22211d&amp;quot;),
+    plot.background = element_rect(fill = &amp;quot;ghostwhite&amp;quot;, color = NA),
+    plot.caption = element_text(hjust = 0.05))
+p
+#- para guardar el plot
+ggsave(p, filename = here::here(&amp;quot;evolucion_poblacion_pancrudo.png&amp;quot;),
+       device = &amp;quot;png&amp;quot;, width = 32, height = 20, units = &amp;quot;cm&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;imagenes/evolucion_poblacion_pancrudo.png&#34; width=&#34;70%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Como veis Pancrudo es pequeñito, pero es la capital del municipio. En 2015 llegamos a un mínimo de 66 habitantes pero parece que recuperamos. Cuevas, Cervera y P️ortalrubio también intentan mantenerse. Ánimo!! 💪🏿⬆&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;algunas-curiosidades&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Algunas curiosidades&lt;/h3&gt;
+&lt;p&gt;Ya que tengo los datos del Nomenclator operativos me ha entrado curiosidad por conocer algunas cosas y ver si por fin entendía lo que es una entidad colectiva, una entidad singular, un núcleo y un diseminado. Al final medio lo entendí usando los datos de Pancrudo. Pancrudo es un municipio compuesto por 4 entidades singulares, pero además esas 4 entidades singulares son núcleos, no son diseminados. Lo que no sé seguro es si una entidad singular puede tener un núcleo y además uno o varios diseminados, creo que sí, pero ya me cansé de los datos.&lt;/p&gt;
+&lt;p&gt;Curiosidades:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;¿Qué municipio tiene más entidades colectivas, singulares, núcleos y diseminados?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pues resulta que en 2020 el municipio con más &lt;a href=&#34;https://es.wikipedia.org/wiki/Entidad_colectiva_de_poblaci%C3%B3n&#34;&gt;entidades colectivas&lt;/a&gt; era Lugo con 54. En cuanto a entidades singulares gana Mieres, en Asturias, con 520, &lt;a href=&#34;#fn4&#34; class=&#34;footnote-ref&#34; id=&#34;fnref4&#34;&gt;&lt;sup&gt;4&lt;/sup&gt;&lt;/a&gt;, y 140 de ellos con cero habitantes. Ahora si que no entiendo nada!! Núcleos: en núcleos, Vigo en cabeza con 292. Por último diseminados: Villaba, municipio de Lugo, con 446. Parece increíble, pero es real!!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Quería ver si estos datos sirven para enlazar series de población de municipios que han sufrido segregaciones. La respuesta es sí. Por ejemplo, en el año 2019, El Palmar de Troya se segregó del municipio de Utrera. Veámoslo en un gráfico:&lt;a href=&#34;#fn5&#34; class=&#34;footnote-ref&#34; id=&#34;fnref5&#34;&gt;&lt;sup&gt;5&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes footnotes-end-of-document&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;O Población del Padrón Continuo por unidad poblacional&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Un fichero .txt y otro .xlsx&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;Yo creo que me gusta y relaja porque es un reto, pero es un reto que sé que voy a superar y que hay una solución “correcta”. No es como un gráfico que siempre se puede mejorar. Una vez has procesado los datos ya está, no hay más que hacer, es un problema que tiene una “solución cerrada”. Además durante el proceso tienes a alguien, el INE, con el que cabrearte por no haber pensado más en que sus datos sean más fácilmente reutilizables. Todo ventajas!!&lt;a href=&#34;#fnref3&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn4&#34;&gt;&lt;p&gt;No me lo puedo creer 520!!&lt;a href=&#34;#fnref4&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn5&#34;&gt;&lt;p&gt;Iba a hacerlo pero … shit happens y lo tengo que dejar, creo que ya vale con el Nomenclator!!! Sí.&lt;a href=&#34;#fnref5&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

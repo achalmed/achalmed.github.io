@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<!-- This site was created with Wowchemy. https://www.wowchemy.com -->
+<!-- Last Published: October 20, 2022 --><html lang="en-us" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.7.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Edison Achalma" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Nomenclator del INE En este post voy a hablar de otra operación estadística del INE: el Nomenclator. ¿Que por qué me interesa el Nomenclator? Pues porque quiero saber cuantos habitantes tiene mi pueblo." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/" />
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Source+Sans+Pro:wght@200;300;400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Source+Sans+Pro:wght@200;300;400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.de285e9886403d05309e598ac914ebc8.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/index.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="achalma edison" />
+  <meta property="og:url" content="https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/" />
+  <meta property="og:title" content="Nomenclator-municipio-pueblo-o-entidad | achalma edison" />
+  <meta property="og:description" content="Nomenclator del INE En este post voy a hablar de otra operación estadística del INE: el Nomenclator. ¿Que por qué me interesa el Nomenclator? Pues porque quiero saber cuantos habitantes tiene mi pueblo." /><meta property="og:image" content="https://achalmed.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://achalmed.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2022-10-20T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2022-10-20T23:53:22-05:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/"
+  },
+  "headline": "Nomenclator-municipio-pueblo-o-entidad",
+  
+  "datePublished": "2022-10-20T00:00:00Z",
+  "dateModified": "2022-10-20T23:53:22-05:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Edison Achalma"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "achalma edison",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://achalmed.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Nomenclator del INE En este post voy a hablar de otra operación estadística del INE: el Nomenclator. ¿Que por qué me interesa el Nomenclator? Pues porque quiero saber cuantos habitantes tiene mi pueblo."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Nomenclator-municipio-pueblo-o-entidad | achalma edison</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="9139f129ac31b6ecc989f6f0f82b1d91" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.3e73bf9628e1b44fbe1a597065205712.js"></script>
+
+  
+
+
+
+
+  <div class="page-header header--fixed">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">achalma edison</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">achalma edison</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Research</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#course"><span>Courses</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/uploads/resume.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+          
+          <li class="nav-item d-none d-lg-inline-flex">
+            <a class="nav-link" href="https://twitter.com/achalmaedison" data-toggle="tooltip" data-placement="bottom" title="Follow me on Twitter" target="_blank" rel="noopener" aria-label="Follow me on Twitter">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+      
+
+      
+      
+
+      
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <div class="container-fluid docs">
+  <div class="row">
+    <div class="col-xl-2 col-lg-2 d-none d-xl-block d-lg-block empty"></div>
+
+    <div class="col-2 col-xl-2 col-lg-2 d-none d-lg-block docs-toc">
+      <ul class="nav toc-top">
+        <li>
+          <a href="#" id="back_to_top" class="docs-toc-title">Contents</a>
+        </li>
+      </ul>
+      
+    </div>
+
+    <main class="col-xl-8 col-lg-8 docs-content" role="main">
+      <article class="article">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-container pt-3">
+  <h1>Nomenclator-municipio-pueblo-o-entidad</h1>
+
+  
+
+  
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Oct 20, 2022
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    7 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/municipo/">municipo</a></span>
+  
+
+</div>
+
+  
+
+
+
+
+
+  
+</div>
+
+        <div class="article-container">
+          <div class="article-style" align="justify">
+<script src="https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/index.en_files/clipboard/clipboard.min.js"></script>
+<link href="https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+<script src="https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+<script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i>","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\"><\/i>","error":"Press Ctrl+C to Copy"})</script>
+<link href="https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/index.en_files/font-awesome/css/all.css" rel="stylesheet" />
+<link href="https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/index.en_files/font-awesome/css/v4-shims.css" rel="stylesheet" />
+
+
+<div id="nomenclator-del-ine" class="section level2">
+<h2>Nomenclator del INE</h2>
+<p>En este post voy a hablar de otra operación estadística del INE: el Nomenclator. ¿Que por qué me interesa el Nomenclator? Pues porque quiero saber cuantos habitantes tiene mi pueblo. Mi pueblo es <a href="https://es.wikipedia.org/wiki/Pancrudo">Pancrudo</a>, pero en realidad la palabra pueblo, que mucha gente emplea para referirse a una localidad con pocos habitantes, es según la <a href="https://es.wikipedia.org/wiki/Pueblo">Wikipedia</a>, un término ambiguo.</p>
+<p>El INE no ofrece datos ni para pueblos ni para localidades, el INE ofrece datos de población para <a href="https://es.wikipedia.org/wiki/Municipio">municipios</a>. Perfecto, porque en el post anterior arreglaste los datos de población para municipios. Es verdad, pero a pesar de que sí que existe el municipio de Pancrudo, mi pueblo, no es un municipio. Trato de explicarlo.</p>
+<p>Existe el municipio de <a href="https://es.wikipedia.org/wiki/Pancrudo">Pancrudo</a>, sí, pero está compuesto de 4 localidades o pueblos: <a href="https://es.wikipedia.org/wiki/Cervera_del_Rinc%C3%B3n">Cervera del Rincón</a>, <a href="https://es.wikipedia.org/wiki/Cuevas_de_Portalrubio">Cuevas de Portalrubio</a>, <a href="https://es.wikipedia.org/wiki/Portalrubio">Portalrubio</a> y Pancrudo. Es decir, mi pueblo (Pancrudo) es una de las 4 localidades o pueblos del municipio también llamado Pancrudo. Un poco de lío!!</p>
+<p>Por lo tanto, si quiero saber cuantos habitantes tiene mi pueblo no me vale con los datos que utilicé en el post anterior, tengo que ir al Nomenclator del INE. Como podemos leer <a href="https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;cid=1254736177010&amp;menu=resultados&amp;idp=1254734710990">aquí</a>, El Nomenclátor<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> contiene la relación detallada de las entidades y núcleos de población existentes a 1 de enero en cada municipio, así como su población. Perfecto, parece que en el Nomenclator sí que aparecerá la población de mi pueblo. En realidad el Nomenclator no utiliza el término pueblo sino que para el Nomenclator mi pueblo será una entidad o núcleo de población. Bueno eso me da igual, vamos a por los datos.</p>
+<p>La verdad es que me complico las cosas, con lo fácil que es buscar en El INE los habitantes de un <strong>municipio</strong> en los diferentes censos. Por ejemplo, <a href="https://www.ine.es/intercensal/intercensal.do?search=1&amp;error1=Debe+introducir+un+nombre+de+municipio.&amp;error2=Debe+introducir+al+menos+3+caracteres.&amp;cmbTipoBusq=0&amp;textoMunicipio=Pancrudo&amp;btnBuscarDenom=Consultar+selecci%C3%B3n">aquí</a> está la búsqueda para el <strong>municipio</strong> de Pancrudo. En las notas al pie de la tabla nos dice que en el censo de 1970 el municipio de Pancrudo ya incorpora a Cervera y Cuevas, y que en el censo de 1981 se incorpora Portalrubio. Viendo los datos de la tabla se aprecia que, al menos para Pancrudo, el fenómeno de la progresiva despoblación de la España rural parece empezar en los 60. Los demógrafos dirán!!</p>
+<div id="los-datos" class="section level3">
+<h3>Los datos</h3>
+<p>Los datos del Nomenclator están <a href="https://www.ine.es/nomen2/ficheros.do">aquí</a>. El INE ofrece un fichero .zip para cada año desde 2010 a 2020. Dentro del .zip hay 2 ficheros<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> con la misma información: el código, el nombre y la población total y por genero de cada entidad o núcleo de población.</p>
+<p>En el diseño de registro del Nomenclator puede verse que el código de las entidades tiene 11 dígitos: los 2 primeros se corresponden con el código provincial y los 3 siguientes con el código del municipio; es decir, los 5 primeros dígitos identifican a que municipio pertenece cada entidad.</p>
+<p><img src="imagenes/nomenclator_ine_disenyo_registro.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Se aprecia que, además de <a href="https://es.wikipedia.org/wiki/Municipio">municipios</a>, en el Nomenclator hay <a href="https://es.wikipedia.org/wiki/Entidad_colectiva_de_poblaci%C3%B3n">entidades colectivas</a>, <a href="https://es.wikipedia.org/wiki/Entidad_singular_de_poblaci%C3%B3n">entidades singulares</a>, <a href="https://es.wikipedia.org/wiki/N%C3%BAcleo_de_poblaci%C3%B3n">nucleos</a> y <a href="https://es.wikipedia.org/wiki/Diseminado">diseminados</a>. Como veis no es que sea fácil-fácil entender los pormenores de estas categorías. Como ejemplo, claro y diáfano al menos para mi: mi pueblo, Pancrudo, es una entidad singular y un núcleo que pertenece al municipio de Pancrudo. Portalrubio, otro pueblo, es otra entidad singular y núcleo del municipio de Pancrudo. Lo mismo ocurre para Cervera del Rincón y Cuevas de Portalrubio. En el municipio de Pancrudo no hay entidades colectivas ni diseminados.</p>
+<p>La verdad es que el procesado de los 11 ficheros me costó un poquito: menos mal que medio me gusta y me “relaja”.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+</div>
+<div id="habitantes-de-mi-pueblo" class="section level3">
+<h3>Habitantes de mi pueblo</h3>
+<p>Ahora que he procesado los datos del Nomenclator, ya puedo hacer un gráfico con la evolución de los habitantes de mi pueblo y ya que me pongo la hago de los cuatro pueblos del municipio de Pancrudo.</p>
+<pre class="r"><code>library(tidyverse)
+nomenclator &lt;- readr::read_csv(&quot;/home/pjpv/Escritorio/my_datos_2021/datos/INE/nomenclator/ine_nomenclator_2010_2020.csv&quot;)
+
+pancrudo &lt;- nomenclator %&gt;% filter(ine_muni.n == &quot;Pancrudo&quot;) %&gt;% 
+  filter(tipo == &quot;Entidad singular&quot;) %&gt;% 
+  filter(poblacion == &quot;Total&quot;) %&gt;% 
+  mutate(year1 = as.character(year)) %&gt;% 
+  mutate(name = as_factor(case_when(
+    name == &quot;PANCRUDO&quot; ~ &quot;Pancrudo&quot;,
+    name %in% c(&quot;CERVERA DEL RINCON&quot;, &quot;CERVERA DEL RINCÓN&quot;) ~ &quot;Cervera del Rincón&quot;,
+    name == &quot;PORTALRUBIO&quot; ~ &quot;Portalrubio&quot;,
+    name == &quot;CUEVAS DE PORTALRUBIO&quot; ~ &quot;Cuevas de Portalrubio&quot;))) %&gt;% 
+  mutate(name = fct_relevel(name, c(&quot;Pancrudo&quot;, &quot;Portalrubio&quot;, &quot;Cervera del Rincón&quot;, &quot;Cuevas de Portalrubio&quot;)))
+
+pancrudo_2020 &lt;- pancrudo %&gt;% filter(year == 2020) %&gt;% select(year, year1, name, values)
+
+p &lt;- ggplot() + 
+  #geom_point(data = pancrudo, aes(x = year1, y = values, color = name)) +
+  geom_line(data = pancrudo, aes(x = year1, y = values, color = name, group = name), size = 1.5) +
+  geom_label(data = pancrudo, aes(x = year1, y = values, label = values)) +
+  #geom_text(data = pancrudo_2020, aes( x = year1, y = values,label = name), nudge_x = 1, check_overlap = TRUE, hjust = 0.5) +
+  scale_color_manual(name = NULL,  values = c(&quot;blueviolet&quot;, &quot;deeppink2&quot;, &quot;cadetblue4&quot;, &quot;brown1&quot;)) +
+  labs(title = &quot;Evolución de la población de los 4 pueblos del municipio de Pancrudo&quot;,
+       subtitle = &quot;&quot;,
+       x = NULL,
+       y = &quot;Habitantes&quot;,
+       caption = &quot;Datos de población del Nomenclator del INE.Visualización: @pjpv4444&quot;, 
+       color = NULL) +
+  theme(plot.title = element_text(size = 16, face = &quot;bold&quot;),
+        legend.position = &quot;none&quot;) +
+  annotate(geom = &quot;text&quot;, x = 11.75, y = 81.2, label =&quot;Pancrudo&quot;, color = &quot;black&quot;, size = 5) +
+  annotate(geom = &quot;text&quot;, x = 11.75, y = 18.5, label =&quot;Portalrubio&quot;, color = &quot;black&quot;, size = 5) +
+  annotate(geom = &quot;text&quot;, x = 12.135, y = 13.2, label =&quot;Cervera del Rincón&quot;, color = &quot;black&quot;, size = 5) +
+  annotate(geom = &quot;text&quot;, x = 12.24, y = 6.8, label =&quot;Cuevas de Portalrubio&quot;, color = &quot;black&quot;, size = 5) +
+  scale_x_discrete(expand = expansion(mult = c(0.04, .225))) +
+  theme_minimal() + theme(plot.title = element_text(size = 16, face = &quot;bold&quot;),
+    legend.position = &quot;none&quot;,
+    text = element_text(family = &quot;Ubuntu Regular&quot;, color = &quot;#22211d&quot;),
+    plot.background = element_rect(fill = &quot;ghostwhite&quot;, color = NA),
+    plot.caption = element_text(hjust = 0.05))
+p
+#- para guardar el plot
+ggsave(p, filename = here::here(&quot;evolucion_poblacion_pancrudo.png&quot;),
+       device = &quot;png&quot;, width = 32, height = 20, units = &quot;cm&quot;)
+</code></pre>
+<p><img src="imagenes/evolucion_poblacion_pancrudo.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Como veis Pancrudo es pequeñito, pero es la capital del municipio. En 2015 llegamos a un mínimo de 66 habitantes pero parece que recuperamos. Cuevas, Cervera y P️ortalrubio también intentan mantenerse. Ánimo!! 💪🏿⬆</p>
+</div>
+<div id="algunas-curiosidades" class="section level3">
+<h3>Algunas curiosidades</h3>
+<p>Ya que tengo los datos del Nomenclator operativos me ha entrado curiosidad por conocer algunas cosas y ver si por fin entendía lo que es una entidad colectiva, una entidad singular, un núcleo y un diseminado. Al final medio lo entendí usando los datos de Pancrudo. Pancrudo es un municipio compuesto por 4 entidades singulares, pero además esas 4 entidades singulares son núcleos, no son diseminados. Lo que no sé seguro es si una entidad singular puede tener un núcleo y además uno o varios diseminados, creo que sí, pero ya me cansé de los datos.</p>
+<p>Curiosidades:</p>
+<ul>
+<li>¿Qué municipio tiene más entidades colectivas, singulares, núcleos y diseminados?</li>
+</ul>
+<p>Pues resulta que en 2020 el municipio con más <a href="https://es.wikipedia.org/wiki/Entidad_colectiva_de_poblaci%C3%B3n">entidades colectivas</a> era Lugo con 54. En cuanto a entidades singulares gana Mieres, en Asturias, con 520, <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>, y 140 de ellos con cero habitantes. Ahora si que no entiendo nada!! Núcleos: en núcleos, Vigo en cabeza con 292. Por último diseminados: Villaba, municipio de Lugo, con 446. Parece increíble, pero es real!!</p>
+<ul>
+<li>Quería ver si estos datos sirven para enlazar series de población de municipios que han sufrido segregaciones. La respuesta es sí. Por ejemplo, en el año 2019, El Palmar de Troya se segregó del municipio de Utrera. Veámoslo en un gráfico:<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></li>
+</ul>
+</div>
+</div>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>O Población del Padrón Continuo por unidad poblacional<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Un fichero .txt y otro .xlsx<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Yo creo que me gusta y relaja porque es un reto, pero es un reto que sé que voy a superar y que hay una solución “correcta”. No es como un gráfico que siempre se puede mejorar. Una vez has procesado los datos ya está, no hay más que hacer, es un problema que tiene una “solución cerrada”. Además durante el proceso tienes a alguien, el INE, con el que cabrearte por no haber pensado más en que sus datos sean más fácilmente reutilizables. Todo ventajas!!<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>No me lo puedo creer 520!!<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>Iba a hacerlo pero … shit happens y lo tengo que dejar, creo que ya vale con el Nomenclator!!! Sí.<a href="#fnref5" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+</div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://achalmed.github.io"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu8bb70b8561c43e196ff53c8758cc3a00_9684572_270x270_fill_lanczos_center_3.png" alt="Edison Achalma"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://achalmed.github.io">Edison Achalma</a></h5>
+      <h6 class="card-subtitle">Professor of Economic</h6>
+      <p class="card-text">Mis intereses de investigación incluyen economía, política, IA y programación.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/achalmaedison" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.co.uk/citations?user=LvAkIvcAAAAJ&amp;hl=es" target="_blank" rel="noopener">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/achalmed" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/achalmaedison/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </article>
+    </main>
+  </div>
+</div>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+
+</footer>
+
+    </div>
+    
+  </div>
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdn.jsdelivr.net/gh/desandro/imagesloaded@v4.1.4/imagesloaded.pkgd.min.js" integrity="sha512-S5PZ9GxJZO16tT9r3WJp/Safn31eu8uWrzglMahDT4dsmgqWonRY9grk3j+3tfuPr9WJNsfooOR7Gi7HL5W2jw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/metafizzy/isotope@v3.0.6/dist/isotope.pkgd.min.js" integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew==" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/en/js/wowchemy.min.191e80c994026a6d530a12662104a356.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>

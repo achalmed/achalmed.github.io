@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<!-- This site was created with Wowchemy. https://www.wowchemy.com -->
+<!-- Last Published: October 20, 2022 --><html lang="en-us" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.7.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Edison Achalma" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Intro En el segundo post realicé una visualización, un mapa, una coropleta, con el crecimiento de la población municipal para el periodo 2000-2020. En este post voy a repetir el análisis pero para la población provincial." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://achalmed.github.io/post/crecimiento-de-la-poblacion-por-provincias-2000-2020/" />
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Source+Sans+Pro:wght@200;300;400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Source+Sans+Pro:wght@200;300;400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.de285e9886403d05309e598ac914ebc8.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/index.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://achalmed.github.io/post/crecimiento-de-la-poblacion-por-provincias-2000-2020/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="achalma edison" />
+  <meta property="og:url" content="https://achalmed.github.io/post/crecimiento-de-la-poblacion-por-provincias-2000-2020/" />
+  <meta property="og:title" content="crecimiento-de-la-poblacion-por-provincias-2000-2020 | achalma edison" />
+  <meta property="og:description" content="Intro En el segundo post realicé una visualización, un mapa, una coropleta, con el crecimiento de la población municipal para el periodo 2000-2020. En este post voy a repetir el análisis pero para la población provincial." /><meta property="og:image" content="https://achalmed.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://achalmed.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2022-10-20T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2022-10-20T23:56:34-05:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://achalmed.github.io/post/crecimiento-de-la-poblacion-por-provincias-2000-2020/"
+  },
+  "headline": "crecimiento-de-la-poblacion-por-provincias-2000-2020",
+  
+  "datePublished": "2022-10-20T00:00:00Z",
+  "dateModified": "2022-10-20T23:56:34-05:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Edison Achalma"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "achalma edison",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://achalmed.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Intro En el segundo post realicé una visualización, un mapa, una coropleta, con el crecimiento de la población municipal para el periodo 2000-2020. En este post voy a repetir el análisis pero para la población provincial."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>crecimiento-de-la-poblacion-por-provincias-2000-2020 | achalma edison</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="d34469bc1f05ab888f570e7b7fbf93ec" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.3e73bf9628e1b44fbe1a597065205712.js"></script>
+
+  
+
+
+
+
+  <div class="page-header header--fixed">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">achalma edison</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">achalma edison</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Research</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#course"><span>Courses</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/uploads/resume.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+          
+          <li class="nav-item d-none d-lg-inline-flex">
+            <a class="nav-link" href="https://twitter.com/achalmaedison" data-toggle="tooltip" data-placement="bottom" title="Follow me on Twitter" target="_blank" rel="noopener" aria-label="Follow me on Twitter">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+        
+      
+
+      
+      
+
+      
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <div class="container-fluid docs">
+  <div class="row">
+    <div class="col-xl-2 col-lg-2 d-none d-xl-block d-lg-block empty"></div>
+
+    <div class="col-2 col-xl-2 col-lg-2 d-none d-lg-block docs-toc">
+      <ul class="nav toc-top">
+        <li>
+          <a href="#" id="back_to_top" class="docs-toc-title">Contents</a>
+        </li>
+      </ul>
+      
+    </div>
+
+    <main class="col-xl-8 col-lg-8 docs-content" role="main">
+      <article class="article">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-container pt-3">
+  <h1>crecimiento-de-la-poblacion-por-provincias-2000-2020</h1>
+
+  
+
+  
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Oct 20, 2022
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    6 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/crecimiento/">crecimiento</a></span>
+  
+
+</div>
+
+  
+
+
+
+
+
+  
+</div>
+
+        <div class="article-container">
+          <div class="article-style" align="justify">
+<script src="https://achalmed.github.io/post/crecimiento-de-la-poblacion-por-provincias-2000-2020/index.en_files/clipboard/clipboard.min.js"></script>
+<link href="https://achalmed.github.io/post/crecimiento-de-la-poblacion-por-provincias-2000-2020/index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+<script src="https://achalmed.github.io/post/crecimiento-de-la-poblacion-por-provincias-2000-2020/index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+<script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i>","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\"><\/i>","error":"Press Ctrl+C to Copy"})</script>
+<link href="https://achalmed.github.io/post/crecimiento-de-la-poblacion-por-provincias-2000-2020/index.en_files/font-awesome/css/all.css" rel="stylesheet" />
+<link href="https://achalmed.github.io/post/crecimiento-de-la-poblacion-por-provincias-2000-2020/index.en_files/font-awesome/css/v4-shims.css" rel="stylesheet" />
+
+
+<div id="intro" class="section level2">
+<h2>Intro</h2>
+<p>En el <a href="https://perezp44.github.io/pjperez.web/posts/2021-02-10-poblacion-municipal/">segundo post</a> realicé una visualización, un mapa, una coropleta, con el crecimiento de la población municipal para el periodo 2000-2020. En este post voy a repetir el análisis pero para la población provincial. En realidad sólo tengo cambiar unas pocas lineas de mi anterior análisis, pero a veces las cosas no son tan sencillas y te acabas liando. Al final he hecho <strong>3 visualizaciones</strong>.</p>
+</div>
+<div id="datos" class="section level2">
+<h2>Datos</h2>
+<p>Los datos ya los tenía arreglados. Lo hice en el segundo post. Ahora sólo hay que cambiar unas pocas lineas para obtener, en lugar de los municipales, los crecimientos de población por provincias.</p>
+<pre class="r"><code>#- quiero hacer un mapa con el crecimiento de la población (por provincias) en el periodo 2000-2020
+library(tidyverse)
+
+#- datos de población
+pob_2000_2020 &lt;- readr::read_rds(&quot;/home/pjpv/Escritorio/my_datos_2021/datos/INE/pob_mun/ine_pob_mun_1996_2020.rds&quot;)
+
+#- rtdos (crec. poblacion en España)
+pob_esp &lt;- pob_2000_2020 %&gt;% 
+  filter(year %in% c(2000, 2020)) %&gt;% 
+  select(year, poblacion, values) %&gt;% 
+  group_by(year, poblacion) %&gt;% 
+  summarise(habitantes = sum(values)) %&gt;% 
+  group_by(poblacion) %&gt;% 
+  mutate(crec_abs = habitantes - lag(habitantes)) %&gt;% 
+  mutate(crec_percent = crec_abs /lag(habitantes)) %&gt;% ungroup()
+
+#- resultados pob provincial
+pob_prov &lt;- pob_2000_2020 %&gt;% 
+  filter(year %in% c(2000, 2020)) %&gt;% 
+  filter(poblacion == &quot;Total&quot;) %&gt;% 
+  group_by(ine_prov, ine_prov.n, year) %&gt;% 
+  mutate(habitantes = sum(values)) %&gt;% #- hago mutate y no summarise xq quiero guardar CCAA
+  select(ine_prov, ine_prov.n, ine_ccaa, ine_ccaa.n, year, habitantes) %&gt;%
+  distinct() %&gt;% 
+  pivot_wider(names_from = c(&quot;year&quot;), values_from = c(&quot;habitantes&quot;)) %&gt;% 
+  mutate(crec_2020_2000 = `2020`- `2000`) %&gt;% 
+  mutate(crec_porcentual = (`2020`- `2000`) / `2000` *100) %&gt;% 
+  arrange(desc(crec_porcentual)) %&gt;% ungroup() %&gt;% 
+  mutate(crec_porcentual.n = paste0(round(crec_porcentual, digits = 1), &quot;%&quot;)) %&gt;% 
+  mutate(crec_porcentual_d = 
+           cut(crec_porcentual, 
+               breaks=c(-Inf, 0.0, 10, pob_esp$crec_percent[6]*100, 30, Inf), 
+               labels=c(&quot;Negativo&quot;,&quot;[ 0% - 10%)&quot;,&quot;[10% - media)&quot;, &quot;[media, 30%)&quot;, &quot; &gt;30%&quot;)))</code></pre>
+</div>
+<div id="mapa-coropleta" class="section level2">
+<h2>Mapa: coropleta</h2>
+<p>Después cargar las geometrías, fusionar con los datos de crecimiento de población y hacer el mapa. Me costó un poquito el otro día para el segundo post, hoy easy-peasy.</p>
+<pre class="r"><code>library(sf)
+# datos geo originales de LAU2 (pero con Canarias shifted) ----
+geo_prov &lt;- readr::read_rds(&quot;/home/pjpv/Escritorio/my_datos_2021/datos/geo_datos_mios/geo_prov_2020_LAU2_canarias.rds&quot;)
+# Morocco geometría
+geo_morocco &lt;- rnaturalearth::ne_countries(scale = &quot;medium&quot;, returnclass = &quot;sf&quot;) %&gt;% 
+  dplyr::filter(sovereignt %in% c(&quot;Morocco&quot;)) %&gt;% select(sovereignt)
+#- fusionar geometria y crec.
+my_geo &lt;- left_join(my_geo, pob_prov) </code></pre>
+<p><img src="imagenes/map_crec_pob_provincial.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><br></p>
+<p>El gráfico corrobora las tendencias mostradas en el <a href="https://perezp44.github.io/pjperez.web/posts/2021-02-10-poblacion-municipal/">segundo post</a>: las provincias que crecen por encima de la media española se concentran a lo largo de la costa mediterránea, en Baleares y Canarias, Navarra, la Rioja, así como en Madrid y su área de influencia. Por contra, el interior de Galicia (Lugo y Orense) y las provincias más occidentales de Castilla y León presentan los decrecimientos de población provinciales más intensos.</p>
+<p>Por supuesto, estos resultados solo nos ofrecen alguna pista parcial sobre la dinámica de la población. Son una foto fija de todo el periodo. Por ejemplo, Zamora es la provincia con una mayor descenso, un 16,2%, pero ¿ha sido este descenso un fenómeno sostenido en el tiempo o es algo reciente?</p>
+<p>La verdad es que la mejor opción para visualizar los datos sería hacer un <a href="https://shiny.rstudio.com/">shiny</a>, y que las personas interesadas tuviesen la libertad de analizar los datos que les interesasen, pero, de momento, lo dejo estar. Ya haré algún shiny más adelante, cuando consiga tunear uno a mi gusto para que sea medio nice-looking. De momento, aquí, voy a explorar otros 2 tipos de visualizaciones: <a href="https://www.data-to-viz.com/caveat/spaghetti.html">spaghetti plots</a> y <a href="https://www.r-graph-gallery.com/heatmap">heatmaps.</a>.</p>
+</div>
+<div id="spaghetti-plot" class="section level2">
+<h2>Spaghetti plot</h2>
+<p>Para ver la evolución en el tiempo de una variable, como es nuestro caso, lo más adecuado es una gráfica de linea temporal, pero es que son 52 provincias, así que, a no ser que utilicemos facets u otra técnica, nos va a salir lo que se suele conocer como un spaghetti plot. Vamos a verlo.</p>
+<p>Los datos ya están medio procesados pero, para evitar el problema de las escalas, voy a utilizar números índices en la visualización.</p>
+<p><img src="imagenes/spaguetti_crec_pob_provincial.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Dos conclusiones. Primera, sí, mejor un shiny y así puedes seleccionar exactamente lo que quieres visualizar. Ya lo haré. Segunda: que hacer un buen gráfico es muy costoso. Nunca se acaba, ni lo dejas como te gustaría!!</p>
+<p>Como veis no comento nada de la evolución de las series. Es que ya dije que los posts los escribo para mi y principalmente para aprender a programar en R. El objetivo era hacer el gráfico, no analizar que pasó con la población a nivel provincial.</p>
+</div>
+<div id="heatmap" class="section level2">
+<h2>Heatmap</h2>
+<p>Nunca había hecho un heatmap, así que ya tocaba hacer uno. Hacer heatmaps con <code>ggplot2</code> es sencillo, solo hay que usar <code>geom_tile()</code> y prácticamente sale sólo, como por arte de magia; además, hay, como mínimo, 2 paquetes específicos para heatmaps: <a href="https://jbengler.github.io/tidyheatmaps/articles/tidyheatmap.html"><code>tidyheatmaps</code></a> y <a href="https://rlbarter.github.io/superheat/index.html"><code>superheat</code></a>. Para aprender, utilicé <a href="https://www.royfrancis.com/a-guide-to-elegant-tiled-heatmaps-in-r-2019/">este post</a> y <a href="https://rkabacoff.github.io/datavis/Other.html#heatmaps">este bookdown</a>.</p>
+<p>Probé diversas cosas y al final me quedo con 2. La verdad es que es complicado hacer un “buen” heatmap. Yo lo he intentado y el resultado ha quedado un poco meh!, y eso que me he apoyado bastante en la <a href="https://jbengler.github.io/tidyheatmaps/articles/tidyheatmap.html">vignette de <code>tidyheatmaps</code></a> y en <a href="https://www.royfrancis.com/a-guide-to-elegant-tiled-heatmaps-in-r-2019/">este post</a>.</p>
+<p>El primero está hecho con el paquete <code>tidyheatmaps</code>. Es muy fácil hacer el heatmap,la vignette está muy bien explicada. El inconveniente es que al final no es un ggplot, por lo que no es fácil tunearlo a tu gusto fuera de las opciones que ha implementado el <a href="mailto:desarrollad@r" class="email">desarrollad@r</a>. Como se ve, en el gráfico hay mucha información resulta, en cierta manera, complicado sacar conclusiones sin utilizar información adicional</p>
+<p><br></p>
+<p><img src="imagenes/heatmap_01.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><br></p>
+<p>El segundo está hecho con <code>geom_tile()</code> por lo que se pueden usar todas las opciones de configuración de ggplot2. El resultado visual es muy diferente porque en este gráfico no he mostrado tanta información: sólo he mostrado una variable dicotómica. En concreto se muestra, para cada año, si el crecimiento de la población en cada provincia fue superior al del conjunto de España o por contra fue menor.</p>
+<p>Se aprecia que, hay provincias, como Murcia o Illes Balears, que en general han crecido durante todo el periodo por encima de lo que lo ha hecho la población española y otras provincias, como Palencia, León o Burgos, que siempre lo han hecho por debajo del agregado español.</p>
+<p>No soy especialista en el tema ni demógrafo pero se aprecia, principalmente en el spaghetti plot, que, evidentemente hay dinámicas propias en las diferentes provincias españolas, con un grupo de provincias que presentan perdidas de población continuadas desde al menos 2000, pero que seguramente comenzasen en la década de los 60, y otro grupo de provincias más dinámicas y que presentan ganancias continuadas de población. Sin embargo, como no podría ser de otra forma, la dinámica de la población provincial también responde a patrones comunes a la economía española como se aprecia en el hecho de que la crisis de 2010, fruto de la crisis financiera de 2008, acabo teniendo un efecto importante en la dinámica de la población a través de sus efectos en la inmigración, llegando incluso a materializarse en un retorno de inmigrantes a sus países de origen, lo que dado las bajas tasas de natalidad en España, se tradujo en reducciones de población a nivel agregado, así como en la mayoría de provincias, incluidas las más dinámicas.</p>
+<p><br></p>
+<p><img src="imagenes/heatmap_02.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><br></p>
+<p>Bueno!!! Me reafirmo, conforme aprendo más sobre <code>ggplot2</code> más me gusta hacer gráficos pero … es bastante complicado dejarlos bien acabados y desde luego lleva tiempo, así que ya vale, creo que los próximos posts aprovecharé mi plantilla para hacer coropletas que esa sí la he dejado bastante niquelada.</p>
+</div>
+</div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://achalmed.github.io"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu8bb70b8561c43e196ff53c8758cc3a00_9684572_270x270_fill_lanczos_center_3.png" alt="Edison Achalma"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://achalmed.github.io">Edison Achalma</a></h5>
+      <h6 class="card-subtitle">Professor of Economic</h6>
+      <p class="card-text">Mis intereses de investigación incluyen economía, política, IA y programación.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/achalmaedison" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.co.uk/citations?user=LvAkIvcAAAAJ&amp;hl=es" target="_blank" rel="noopener">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/achalmed" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/achalmaedison/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </article>
+    </main>
+  </div>
+</div>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+
+</footer>
+
+    </div>
+    
+  </div>
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdn.jsdelivr.net/gh/desandro/imagesloaded@v4.1.4/imagesloaded.pkgd.min.js" integrity="sha512-S5PZ9GxJZO16tT9r3WJp/Safn31eu8uWrzglMahDT4dsmgqWonRY9grk3j+3tfuPr9WJNsfooOR7Gi7HL5W2jw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/metafizzy/isotope@v3.0.6/dist/isotope.pkgd.min.js" integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew==" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/en/js/wowchemy.min.191e80c994026a6d530a12662104a356.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>

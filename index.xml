@@ -33,6 +33,211 @@
     </item>
     
     <item>
+      <title>crecimiento-de-la-poblacion-por-provincias-2000-2020</title>
+      <link>https://achalmed.github.io/post/crecimiento-de-la-poblacion-por-provincias-2000-2020/</link>
+      <pubDate>Thu, 20 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://achalmed.github.io/post/crecimiento-de-la-poblacion-por-provincias-2000-2020/</guid>
+      <description>
+&lt;script src=&#34;https://achalmed.github.io/post/crecimiento-de-la-poblacion-por-provincias-2000-2020/index.en_files/clipboard/clipboard.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://achalmed.github.io/post/crecimiento-de-la-poblacion-por-provincias-2000-2020/index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://achalmed.github.io/post/crecimiento-de-la-poblacion-por-provincias-2000-2020/index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;window.xaringanExtraClipboard(null, {&#34;button&#34;:&#34;&lt;i class=\&#34;fa fa-clipboard\&#34;&gt;&lt;\/i&gt;&#34;,&#34;success&#34;:&#34;&lt;i class=\&#34;fa fa-check\&#34; style=\&#34;color: #90BE6D\&#34;&gt;&lt;\/i&gt;&#34;,&#34;error&#34;:&#34;Press Ctrl+C to Copy&#34;})&lt;/script&gt;
+&lt;link href=&#34;https://achalmed.github.io/post/crecimiento-de-la-poblacion-por-provincias-2000-2020/index.en_files/font-awesome/css/all.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;link href=&#34;https://achalmed.github.io/post/crecimiento-de-la-poblacion-por-provincias-2000-2020/index.en_files/font-awesome/css/v4-shims.css&#34; rel=&#34;stylesheet&#34; /&gt;
+
+
+&lt;div id=&#34;intro&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Intro&lt;/h2&gt;
+&lt;p&gt;En el &lt;a href=&#34;https://perezp44.github.io/pjperez.web/posts/2021-02-10-poblacion-municipal/&#34;&gt;segundo post&lt;/a&gt; realicé una visualización, un mapa, una coropleta, con el crecimiento de la población municipal para el periodo 2000-2020. En este post voy a repetir el análisis pero para la población provincial. En realidad sólo tengo cambiar unas pocas lineas de mi anterior análisis, pero a veces las cosas no son tan sencillas y te acabas liando. Al final he hecho &lt;strong&gt;3 visualizaciones&lt;/strong&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;datos&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Datos&lt;/h2&gt;
+&lt;p&gt;Los datos ya los tenía arreglados. Lo hice en el segundo post. Ahora sólo hay que cambiar unas pocas lineas para obtener, en lugar de los municipales, los crecimientos de población por provincias.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#- quiero hacer un mapa con el crecimiento de la población (por provincias) en el periodo 2000-2020
+library(tidyverse)
+
+#- datos de población
+pob_2000_2020 &amp;lt;- readr::read_rds(&amp;quot;/home/pjpv/Escritorio/my_datos_2021/datos/INE/pob_mun/ine_pob_mun_1996_2020.rds&amp;quot;)
+
+#- rtdos (crec. poblacion en España)
+pob_esp &amp;lt;- pob_2000_2020 %&amp;gt;% 
+  filter(year %in% c(2000, 2020)) %&amp;gt;% 
+  select(year, poblacion, values) %&amp;gt;% 
+  group_by(year, poblacion) %&amp;gt;% 
+  summarise(habitantes = sum(values)) %&amp;gt;% 
+  group_by(poblacion) %&amp;gt;% 
+  mutate(crec_abs = habitantes - lag(habitantes)) %&amp;gt;% 
+  mutate(crec_percent = crec_abs /lag(habitantes)) %&amp;gt;% ungroup()
+
+#- resultados pob provincial
+pob_prov &amp;lt;- pob_2000_2020 %&amp;gt;% 
+  filter(year %in% c(2000, 2020)) %&amp;gt;% 
+  filter(poblacion == &amp;quot;Total&amp;quot;) %&amp;gt;% 
+  group_by(ine_prov, ine_prov.n, year) %&amp;gt;% 
+  mutate(habitantes = sum(values)) %&amp;gt;% #- hago mutate y no summarise xq quiero guardar CCAA
+  select(ine_prov, ine_prov.n, ine_ccaa, ine_ccaa.n, year, habitantes) %&amp;gt;%
+  distinct() %&amp;gt;% 
+  pivot_wider(names_from = c(&amp;quot;year&amp;quot;), values_from = c(&amp;quot;habitantes&amp;quot;)) %&amp;gt;% 
+  mutate(crec_2020_2000 = `2020`- `2000`) %&amp;gt;% 
+  mutate(crec_porcentual = (`2020`- `2000`) / `2000` *100) %&amp;gt;% 
+  arrange(desc(crec_porcentual)) %&amp;gt;% ungroup() %&amp;gt;% 
+  mutate(crec_porcentual.n = paste0(round(crec_porcentual, digits = 1), &amp;quot;%&amp;quot;)) %&amp;gt;% 
+  mutate(crec_porcentual_d = 
+           cut(crec_porcentual, 
+               breaks=c(-Inf, 0.0, 10, pob_esp$crec_percent[6]*100, 30, Inf), 
+               labels=c(&amp;quot;Negativo&amp;quot;,&amp;quot;[ 0% - 10%)&amp;quot;,&amp;quot;[10% - media)&amp;quot;, &amp;quot;[media, 30%)&amp;quot;, &amp;quot; &amp;gt;30%&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mapa-coropleta&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Mapa: coropleta&lt;/h2&gt;
+&lt;p&gt;Después cargar las geometrías, fusionar con los datos de crecimiento de población y hacer el mapa. Me costó un poquito el otro día para el segundo post, hoy easy-peasy.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(sf)
+# datos geo originales de LAU2 (pero con Canarias shifted) ----
+geo_prov &amp;lt;- readr::read_rds(&amp;quot;/home/pjpv/Escritorio/my_datos_2021/datos/geo_datos_mios/geo_prov_2020_LAU2_canarias.rds&amp;quot;)
+# Morocco geometría
+geo_morocco &amp;lt;- rnaturalearth::ne_countries(scale = &amp;quot;medium&amp;quot;, returnclass = &amp;quot;sf&amp;quot;) %&amp;gt;% 
+  dplyr::filter(sovereignt %in% c(&amp;quot;Morocco&amp;quot;)) %&amp;gt;% select(sovereignt)
+#- fusionar geometria y crec.
+my_geo &amp;lt;- left_join(my_geo, pob_prov) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;imagenes/map_crec_pob_provincial.png&#34; width=&#34;70%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;El gráfico corrobora las tendencias mostradas en el &lt;a href=&#34;https://perezp44.github.io/pjperez.web/posts/2021-02-10-poblacion-municipal/&#34;&gt;segundo post&lt;/a&gt;: las provincias que crecen por encima de la media española se concentran a lo largo de la costa mediterránea, en Baleares y Canarias, Navarra, la Rioja, así como en Madrid y su área de influencia. Por contra, el interior de Galicia (Lugo y Orense) y las provincias más occidentales de Castilla y León presentan los decrecimientos de población provinciales más intensos.&lt;/p&gt;
+&lt;p&gt;Por supuesto, estos resultados solo nos ofrecen alguna pista parcial sobre la dinámica de la población. Son una foto fija de todo el periodo. Por ejemplo, Zamora es la provincia con una mayor descenso, un 16,2%, pero ¿ha sido este descenso un fenómeno sostenido en el tiempo o es algo reciente?&lt;/p&gt;
+&lt;p&gt;La verdad es que la mejor opción para visualizar los datos sería hacer un &lt;a href=&#34;https://shiny.rstudio.com/&#34;&gt;shiny&lt;/a&gt;, y que las personas interesadas tuviesen la libertad de analizar los datos que les interesasen, pero, de momento, lo dejo estar. Ya haré algún shiny más adelante, cuando consiga tunear uno a mi gusto para que sea medio nice-looking. De momento, aquí, voy a explorar otros 2 tipos de visualizaciones: &lt;a href=&#34;https://www.data-to-viz.com/caveat/spaghetti.html&#34;&gt;spaghetti plots&lt;/a&gt; y &lt;a href=&#34;https://www.r-graph-gallery.com/heatmap&#34;&gt;heatmaps.&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;spaghetti-plot&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Spaghetti plot&lt;/h2&gt;
+&lt;p&gt;Para ver la evolución en el tiempo de una variable, como es nuestro caso, lo más adecuado es una gráfica de linea temporal, pero es que son 52 provincias, así que, a no ser que utilicemos facets u otra técnica, nos va a salir lo que se suele conocer como un spaghetti plot. Vamos a verlo.&lt;/p&gt;
+&lt;p&gt;Los datos ya están medio procesados pero, para evitar el problema de las escalas, voy a utilizar números índices en la visualización.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;imagenes/spaguetti_crec_pob_provincial.png&#34; width=&#34;70%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Dos conclusiones. Primera, sí, mejor un shiny y así puedes seleccionar exactamente lo que quieres visualizar. Ya lo haré. Segunda: que hacer un buen gráfico es muy costoso. Nunca se acaba, ni lo dejas como te gustaría!!&lt;/p&gt;
+&lt;p&gt;Como veis no comento nada de la evolución de las series. Es que ya dije que los posts los escribo para mi y principalmente para aprender a programar en R. El objetivo era hacer el gráfico, no analizar que pasó con la población a nivel provincial.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;heatmap&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Heatmap&lt;/h2&gt;
+&lt;p&gt;Nunca había hecho un heatmap, así que ya tocaba hacer uno. Hacer heatmaps con &lt;code&gt;ggplot2&lt;/code&gt; es sencillo, solo hay que usar &lt;code&gt;geom_tile()&lt;/code&gt; y prácticamente sale sólo, como por arte de magia; además, hay, como mínimo, 2 paquetes específicos para heatmaps: &lt;a href=&#34;https://jbengler.github.io/tidyheatmaps/articles/tidyheatmap.html&#34;&gt;&lt;code&gt;tidyheatmaps&lt;/code&gt;&lt;/a&gt; y &lt;a href=&#34;https://rlbarter.github.io/superheat/index.html&#34;&gt;&lt;code&gt;superheat&lt;/code&gt;&lt;/a&gt;. Para aprender, utilicé &lt;a href=&#34;https://www.royfrancis.com/a-guide-to-elegant-tiled-heatmaps-in-r-2019/&#34;&gt;este post&lt;/a&gt; y &lt;a href=&#34;https://rkabacoff.github.io/datavis/Other.html#heatmaps&#34;&gt;este bookdown&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Probé diversas cosas y al final me quedo con 2. La verdad es que es complicado hacer un “buen” heatmap. Yo lo he intentado y el resultado ha quedado un poco meh!, y eso que me he apoyado bastante en la &lt;a href=&#34;https://jbengler.github.io/tidyheatmaps/articles/tidyheatmap.html&#34;&gt;vignette de &lt;code&gt;tidyheatmaps&lt;/code&gt;&lt;/a&gt; y en &lt;a href=&#34;https://www.royfrancis.com/a-guide-to-elegant-tiled-heatmaps-in-r-2019/&#34;&gt;este post&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;El primero está hecho con el paquete &lt;code&gt;tidyheatmaps&lt;/code&gt;. Es muy fácil hacer el heatmap,la vignette está muy bien explicada. El inconveniente es que al final no es un ggplot, por lo que no es fácil tunearlo a tu gusto fuera de las opciones que ha implementado el &lt;a href=&#34;mailto:desarrollad@r&#34; class=&#34;email&#34;&gt;desarrollad@r&lt;/a&gt;. Como se ve, en el gráfico hay mucha información resulta, en cierta manera, complicado sacar conclusiones sin utilizar información adicional&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;imagenes/heatmap_01.png&#34; width=&#34;70%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;El segundo está hecho con &lt;code&gt;geom_tile()&lt;/code&gt; por lo que se pueden usar todas las opciones de configuración de ggplot2. El resultado visual es muy diferente porque en este gráfico no he mostrado tanta información: sólo he mostrado una variable dicotómica. En concreto se muestra, para cada año, si el crecimiento de la población en cada provincia fue superior al del conjunto de España o por contra fue menor.&lt;/p&gt;
+&lt;p&gt;Se aprecia que, hay provincias, como Murcia o Illes Balears, que en general han crecido durante todo el periodo por encima de lo que lo ha hecho la población española y otras provincias, como Palencia, León o Burgos, que siempre lo han hecho por debajo del agregado español.&lt;/p&gt;
+&lt;p&gt;No soy especialista en el tema ni demógrafo pero se aprecia, principalmente en el spaghetti plot, que, evidentemente hay dinámicas propias en las diferentes provincias españolas, con un grupo de provincias que presentan perdidas de población continuadas desde al menos 2000, pero que seguramente comenzasen en la década de los 60, y otro grupo de provincias más dinámicas y que presentan ganancias continuadas de población. Sin embargo, como no podría ser de otra forma, la dinámica de la población provincial también responde a patrones comunes a la economía española como se aprecia en el hecho de que la crisis de 2010, fruto de la crisis financiera de 2008, acabo teniendo un efecto importante en la dinámica de la población a través de sus efectos en la inmigración, llegando incluso a materializarse en un retorno de inmigrantes a sus países de origen, lo que dado las bajas tasas de natalidad en España, se tradujo en reducciones de población a nivel agregado, así como en la mayoría de provincias, incluidas las más dinámicas.&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;imagenes/heatmap_02.png&#34; width=&#34;70%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Bueno!!! Me reafirmo, conforme aprendo más sobre &lt;code&gt;ggplot2&lt;/code&gt; más me gusta hacer gráficos pero … es bastante complicado dejarlos bien acabados y desde luego lleva tiempo, así que ya vale, creo que los próximos posts aprovecharé mi plantilla para hacer coropletas que esa sí la he dejado bastante niquelada.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Nomenclator-municipio-pueblo-o-entidad</title>
+      <link>https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/</link>
+      <pubDate>Thu, 20 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/</guid>
+      <description>
+&lt;script src=&#34;https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/index.en_files/clipboard/clipboard.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/index.en_files/xaringanExtra-clipboard/xaringanExtra-clipboard.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;window.xaringanExtraClipboard(null, {&#34;button&#34;:&#34;&lt;i class=\&#34;fa fa-clipboard\&#34;&gt;&lt;\/i&gt;&#34;,&#34;success&#34;:&#34;&lt;i class=\&#34;fa fa-check\&#34; style=\&#34;color: #90BE6D\&#34;&gt;&lt;\/i&gt;&#34;,&#34;error&#34;:&#34;Press Ctrl+C to Copy&#34;})&lt;/script&gt;
+&lt;link href=&#34;https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/index.en_files/font-awesome/css/all.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;link href=&#34;https://achalmed.github.io/post/nomenclator-municipio-pueblo-o-entidad/index.en_files/font-awesome/css/v4-shims.css&#34; rel=&#34;stylesheet&#34; /&gt;
+
+
+&lt;div id=&#34;nomenclator-del-ine&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Nomenclator del INE&lt;/h2&gt;
+&lt;p&gt;En este post voy a hablar de otra operación estadística del INE: el Nomenclator. ¿Que por qué me interesa el Nomenclator? Pues porque quiero saber cuantos habitantes tiene mi pueblo. Mi pueblo es &lt;a href=&#34;https://es.wikipedia.org/wiki/Pancrudo&#34;&gt;Pancrudo&lt;/a&gt;, pero en realidad la palabra pueblo, que mucha gente emplea para referirse a una localidad con pocos habitantes, es según la &lt;a href=&#34;https://es.wikipedia.org/wiki/Pueblo&#34;&gt;Wikipedia&lt;/a&gt;, un término ambiguo.&lt;/p&gt;
+&lt;p&gt;El INE no ofrece datos ni para pueblos ni para localidades, el INE ofrece datos de población para &lt;a href=&#34;https://es.wikipedia.org/wiki/Municipio&#34;&gt;municipios&lt;/a&gt;. Perfecto, porque en el post anterior arreglaste los datos de población para municipios. Es verdad, pero a pesar de que sí que existe el municipio de Pancrudo, mi pueblo, no es un municipio. Trato de explicarlo.&lt;/p&gt;
+&lt;p&gt;Existe el municipio de &lt;a href=&#34;https://es.wikipedia.org/wiki/Pancrudo&#34;&gt;Pancrudo&lt;/a&gt;, sí, pero está compuesto de 4 localidades o pueblos: &lt;a href=&#34;https://es.wikipedia.org/wiki/Cervera_del_Rinc%C3%B3n&#34;&gt;Cervera del Rincón&lt;/a&gt;, &lt;a href=&#34;https://es.wikipedia.org/wiki/Cuevas_de_Portalrubio&#34;&gt;Cuevas de Portalrubio&lt;/a&gt;, &lt;a href=&#34;https://es.wikipedia.org/wiki/Portalrubio&#34;&gt;Portalrubio&lt;/a&gt; y Pancrudo. Es decir, mi pueblo (Pancrudo) es una de las 4 localidades o pueblos del municipio también llamado Pancrudo. Un poco de lío!!&lt;/p&gt;
+&lt;p&gt;Por lo tanto, si quiero saber cuantos habitantes tiene mi pueblo no me vale con los datos que utilicé en el post anterior, tengo que ir al Nomenclator del INE. Como podemos leer &lt;a href=&#34;https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;amp;cid=1254736177010&amp;amp;menu=resultados&amp;amp;idp=1254734710990&#34;&gt;aquí&lt;/a&gt;, El Nomenclátor&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; contiene la relación detallada de las entidades y núcleos de población existentes a 1 de enero en cada municipio, así como su población. Perfecto, parece que en el Nomenclator sí que aparecerá la población de mi pueblo. En realidad el Nomenclator no utiliza el término pueblo sino que para el Nomenclator mi pueblo será una entidad o núcleo de población. Bueno eso me da igual, vamos a por los datos.&lt;/p&gt;
+&lt;p&gt;La verdad es que me complico las cosas, con lo fácil que es buscar en El INE los habitantes de un &lt;strong&gt;municipio&lt;/strong&gt; en los diferentes censos. Por ejemplo, &lt;a href=&#34;https://www.ine.es/intercensal/intercensal.do?search=1&amp;amp;error1=Debe+introducir+un+nombre+de+municipio.&amp;amp;error2=Debe+introducir+al+menos+3+caracteres.&amp;amp;cmbTipoBusq=0&amp;amp;textoMunicipio=Pancrudo&amp;amp;btnBuscarDenom=Consultar+selecci%C3%B3n&#34;&gt;aquí&lt;/a&gt; está la búsqueda para el &lt;strong&gt;municipio&lt;/strong&gt; de Pancrudo. En las notas al pie de la tabla nos dice que en el censo de 1970 el municipio de Pancrudo ya incorpora a Cervera y Cuevas, y que en el censo de 1981 se incorpora Portalrubio. Viendo los datos de la tabla se aprecia que, al menos para Pancrudo, el fenómeno de la progresiva despoblación de la España rural parece empezar en los 60. Los demógrafos dirán!!&lt;/p&gt;
+&lt;div id=&#34;los-datos&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Los datos&lt;/h3&gt;
+&lt;p&gt;Los datos del Nomenclator están &lt;a href=&#34;https://www.ine.es/nomen2/ficheros.do&#34;&gt;aquí&lt;/a&gt;. El INE ofrece un fichero .zip para cada año desde 2010 a 2020. Dentro del .zip hay 2 ficheros&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; con la misma información: el código, el nombre y la población total y por genero de cada entidad o núcleo de población.&lt;/p&gt;
+&lt;p&gt;En el diseño de registro del Nomenclator puede verse que el código de las entidades tiene 11 dígitos: los 2 primeros se corresponden con el código provincial y los 3 siguientes con el código del municipio; es decir, los 5 primeros dígitos identifican a que municipio pertenece cada entidad.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;imagenes/nomenclator_ine_disenyo_registro.png&#34; width=&#34;70%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Se aprecia que, además de &lt;a href=&#34;https://es.wikipedia.org/wiki/Municipio&#34;&gt;municipios&lt;/a&gt;, en el Nomenclator hay &lt;a href=&#34;https://es.wikipedia.org/wiki/Entidad_colectiva_de_poblaci%C3%B3n&#34;&gt;entidades colectivas&lt;/a&gt;, &lt;a href=&#34;https://es.wikipedia.org/wiki/Entidad_singular_de_poblaci%C3%B3n&#34;&gt;entidades singulares&lt;/a&gt;, &lt;a href=&#34;https://es.wikipedia.org/wiki/N%C3%BAcleo_de_poblaci%C3%B3n&#34;&gt;nucleos&lt;/a&gt; y &lt;a href=&#34;https://es.wikipedia.org/wiki/Diseminado&#34;&gt;diseminados&lt;/a&gt;. Como veis no es que sea fácil-fácil entender los pormenores de estas categorías. Como ejemplo, claro y diáfano al menos para mi: mi pueblo, Pancrudo, es una entidad singular y un núcleo que pertenece al municipio de Pancrudo. Portalrubio, otro pueblo, es otra entidad singular y núcleo del municipio de Pancrudo. Lo mismo ocurre para Cervera del Rincón y Cuevas de Portalrubio. En el municipio de Pancrudo no hay entidades colectivas ni diseminados.&lt;/p&gt;
+&lt;p&gt;La verdad es que el procesado de los 11 ficheros me costó un poquito: menos mal que medio me gusta y me “relaja”.&lt;a href=&#34;#fn3&#34; class=&#34;footnote-ref&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;habitantes-de-mi-pueblo&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Habitantes de mi pueblo&lt;/h3&gt;
+&lt;p&gt;Ahora que he procesado los datos del Nomenclator, ya puedo hacer un gráfico con la evolución de los habitantes de mi pueblo y ya que me pongo la hago de los cuatro pueblos del municipio de Pancrudo.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+nomenclator &amp;lt;- readr::read_csv(&amp;quot;/home/pjpv/Escritorio/my_datos_2021/datos/INE/nomenclator/ine_nomenclator_2010_2020.csv&amp;quot;)
+
+pancrudo &amp;lt;- nomenclator %&amp;gt;% filter(ine_muni.n == &amp;quot;Pancrudo&amp;quot;) %&amp;gt;% 
+  filter(tipo == &amp;quot;Entidad singular&amp;quot;) %&amp;gt;% 
+  filter(poblacion == &amp;quot;Total&amp;quot;) %&amp;gt;% 
+  mutate(year1 = as.character(year)) %&amp;gt;% 
+  mutate(name = as_factor(case_when(
+    name == &amp;quot;PANCRUDO&amp;quot; ~ &amp;quot;Pancrudo&amp;quot;,
+    name %in% c(&amp;quot;CERVERA DEL RINCON&amp;quot;, &amp;quot;CERVERA DEL RINCÓN&amp;quot;) ~ &amp;quot;Cervera del Rincón&amp;quot;,
+    name == &amp;quot;PORTALRUBIO&amp;quot; ~ &amp;quot;Portalrubio&amp;quot;,
+    name == &amp;quot;CUEVAS DE PORTALRUBIO&amp;quot; ~ &amp;quot;Cuevas de Portalrubio&amp;quot;))) %&amp;gt;% 
+  mutate(name = fct_relevel(name, c(&amp;quot;Pancrudo&amp;quot;, &amp;quot;Portalrubio&amp;quot;, &amp;quot;Cervera del Rincón&amp;quot;, &amp;quot;Cuevas de Portalrubio&amp;quot;)))
+
+pancrudo_2020 &amp;lt;- pancrudo %&amp;gt;% filter(year == 2020) %&amp;gt;% select(year, year1, name, values)
+
+p &amp;lt;- ggplot() + 
+  #geom_point(data = pancrudo, aes(x = year1, y = values, color = name)) +
+  geom_line(data = pancrudo, aes(x = year1, y = values, color = name, group = name), size = 1.5) +
+  geom_label(data = pancrudo, aes(x = year1, y = values, label = values)) +
+  #geom_text(data = pancrudo_2020, aes( x = year1, y = values,label = name), nudge_x = 1, check_overlap = TRUE, hjust = 0.5) +
+  scale_color_manual(name = NULL,  values = c(&amp;quot;blueviolet&amp;quot;, &amp;quot;deeppink2&amp;quot;, &amp;quot;cadetblue4&amp;quot;, &amp;quot;brown1&amp;quot;)) +
+  labs(title = &amp;quot;Evolución de la población de los 4 pueblos del municipio de Pancrudo&amp;quot;,
+       subtitle = &amp;quot;&amp;quot;,
+       x = NULL,
+       y = &amp;quot;Habitantes&amp;quot;,
+       caption = &amp;quot;Datos de población del Nomenclator del INE.Visualización: @pjpv4444&amp;quot;, 
+       color = NULL) +
+  theme(plot.title = element_text(size = 16, face = &amp;quot;bold&amp;quot;),
+        legend.position = &amp;quot;none&amp;quot;) +
+  annotate(geom = &amp;quot;text&amp;quot;, x = 11.75, y = 81.2, label =&amp;quot;Pancrudo&amp;quot;, color = &amp;quot;black&amp;quot;, size = 5) +
+  annotate(geom = &amp;quot;text&amp;quot;, x = 11.75, y = 18.5, label =&amp;quot;Portalrubio&amp;quot;, color = &amp;quot;black&amp;quot;, size = 5) +
+  annotate(geom = &amp;quot;text&amp;quot;, x = 12.135, y = 13.2, label =&amp;quot;Cervera del Rincón&amp;quot;, color = &amp;quot;black&amp;quot;, size = 5) +
+  annotate(geom = &amp;quot;text&amp;quot;, x = 12.24, y = 6.8, label =&amp;quot;Cuevas de Portalrubio&amp;quot;, color = &amp;quot;black&amp;quot;, size = 5) +
+  scale_x_discrete(expand = expansion(mult = c(0.04, .225))) +
+  theme_minimal() + theme(plot.title = element_text(size = 16, face = &amp;quot;bold&amp;quot;),
+    legend.position = &amp;quot;none&amp;quot;,
+    text = element_text(family = &amp;quot;Ubuntu Regular&amp;quot;, color = &amp;quot;#22211d&amp;quot;),
+    plot.background = element_rect(fill = &amp;quot;ghostwhite&amp;quot;, color = NA),
+    plot.caption = element_text(hjust = 0.05))
+p
+#- para guardar el plot
+ggsave(p, filename = here::here(&amp;quot;evolucion_poblacion_pancrudo.png&amp;quot;),
+       device = &amp;quot;png&amp;quot;, width = 32, height = 20, units = &amp;quot;cm&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;imagenes/evolucion_poblacion_pancrudo.png&#34; width=&#34;70%&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Como veis Pancrudo es pequeñito, pero es la capital del municipio. En 2015 llegamos a un mínimo de 66 habitantes pero parece que recuperamos. Cuevas, Cervera y P️ortalrubio también intentan mantenerse. Ánimo!! 💪🏿⬆&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;algunas-curiosidades&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Algunas curiosidades&lt;/h3&gt;
+&lt;p&gt;Ya que tengo los datos del Nomenclator operativos me ha entrado curiosidad por conocer algunas cosas y ver si por fin entendía lo que es una entidad colectiva, una entidad singular, un núcleo y un diseminado. Al final medio lo entendí usando los datos de Pancrudo. Pancrudo es un municipio compuesto por 4 entidades singulares, pero además esas 4 entidades singulares son núcleos, no son diseminados. Lo que no sé seguro es si una entidad singular puede tener un núcleo y además uno o varios diseminados, creo que sí, pero ya me cansé de los datos.&lt;/p&gt;
+&lt;p&gt;Curiosidades:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;¿Qué municipio tiene más entidades colectivas, singulares, núcleos y diseminados?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pues resulta que en 2020 el municipio con más &lt;a href=&#34;https://es.wikipedia.org/wiki/Entidad_colectiva_de_poblaci%C3%B3n&#34;&gt;entidades colectivas&lt;/a&gt; era Lugo con 54. En cuanto a entidades singulares gana Mieres, en Asturias, con 520, &lt;a href=&#34;#fn4&#34; class=&#34;footnote-ref&#34; id=&#34;fnref4&#34;&gt;&lt;sup&gt;4&lt;/sup&gt;&lt;/a&gt;, y 140 de ellos con cero habitantes. Ahora si que no entiendo nada!! Núcleos: en núcleos, Vigo en cabeza con 292. Por último diseminados: Villaba, municipio de Lugo, con 446. Parece increíble, pero es real!!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Quería ver si estos datos sirven para enlazar series de población de municipios que han sufrido segregaciones. La respuesta es sí. Por ejemplo, en el año 2019, El Palmar de Troya se segregó del municipio de Utrera. Veámoslo en un gráfico:&lt;a href=&#34;#fn5&#34; class=&#34;footnote-ref&#34; id=&#34;fnref5&#34;&gt;&lt;sup&gt;5&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes footnotes-end-of-document&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;O Población del Padrón Continuo por unidad poblacional&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Un fichero .txt y otro .xlsx&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;Yo creo que me gusta y relaja porque es un reto, pero es un reto que sé que voy a superar y que hay una solución “correcta”. No es como un gráfico que siempre se puede mejorar. Una vez has procesado los datos ya está, no hay más que hacer, es un problema que tiene una “solución cerrada”. Además durante el proceso tienes a alguien, el INE, con el que cabrearte por no haber pensado más en que sus datos sean más fácilmente reutilizables. Todo ventajas!!&lt;a href=&#34;#fnref3&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn4&#34;&gt;&lt;p&gt;No me lo puedo creer 520!!&lt;a href=&#34;#fnref4&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn5&#34;&gt;&lt;p&gt;Iba a hacerlo pero … shit happens y lo tengo que dejar, creo que ya vale con el Nomenclator!!! Sí.&lt;a href=&#34;#fnref5&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Las flores de Iris</title>
       <link>https://achalmed.github.io/post/las-flores-de-iris/</link>
       <pubDate>Mon, 17 Oct 2022 00:00:00 +0000</pubDate>
