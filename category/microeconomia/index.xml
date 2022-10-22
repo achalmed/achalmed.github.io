@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microeconomía | achalma edison</title>
+    <link>https://achalmed.github.io/category/microeconomia/</link>
+      <atom:link href="https://achalmed.github.io/category/microeconomia/index.xml" rel="self" type="application/rss+xml" />
+    <description>Microeconomía</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 21 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://achalmed.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>Microeconomía</title>
+      <link>https://achalmed.github.io/category/microeconomia/</link>
+    </image>
+    
+    <item>
+      <title>Wilson y crecimiento</title>
+      <link>https://achalmed.github.io/post/wilson-y-crecimiento/</link>
+      <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://achalmed.github.io/post/wilson-y-crecimiento/</guid>
+      <description>
+
+
+&lt;div id=&#34;hola-mundo&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Hola mundo&lt;/h1&gt;
+&lt;p&gt;que tal&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
