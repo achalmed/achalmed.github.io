@@ -1,0 +1,24 @@
+% YAAC Another Awesome CV LaTeX Template
+%
+% This template has been downloaded from:
+% https://github.com/darwiin/yaac-another-awesome-cv
+%
+% Author:
+% Christophe Roger
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+%Section compétences
+\sectionTitle{Conoc}{\faTasks}
+
+\begin{keywords}
+
+		\keywordsentry{Programación}{Fundamentos de programación, Machine learning con R, MATLAB, Python, Visual Basic}
+		
+		\keywordsentry{Microsoft Office}{Word Intermedio, Excel Intermedio}
+		
+		\keywordsentry{Software}{EViews, LáTex, Power BI, Stata}
+		
+		
+\end{keywords}

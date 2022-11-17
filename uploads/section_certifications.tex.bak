@@ -1,0 +1,31 @@
+% YAAC Another Awesome CV LaTeX Template
+%
+% This template has been downloaded from:
+% https://github.com/darwiin/yaac-another-awesome-cv
+%
+% Author:
+% Christophe Roger
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+%Section: Scholarships and additional info
+\sectionTitle{Cursos y/o Estudios Complementarios}{\faMortarBoard}
+
+\begin{scholarship}
+			
+	\scholarshipentry{2020}
+					{Finanzas básicas y planeamiento estratégico,de Grupo IDDEA, 2020 CERT EEA FBYPE SM CE2229}
+					
+	\scholarshipentry{2020}
+					{Inversión Extranjera como Motor del Desarrollo para América Latina y el Caribe, de Banco Interamericano Del Desarrollo}
+					
+	\scholarshipentry{2018}
+					{Confederación Nacional de Instituciones Empresariales Privadas (CONFIEP)}
+								
+	\scholarshipentry{2017}
+					{Plataformas de marketing digital en la \& social media business, de Google}
+					
+					
+					
+\end{scholarship}

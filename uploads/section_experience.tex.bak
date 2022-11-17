@@ -1,0 +1,50 @@
+% YAAC Another Awesome CV LaTeX Template
+%
+% This template has been downloaded from:
+% https://github.com/darwiin/yaac-another-awesome-cv
+%
+% Author:
+% Christophe Roger
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%Section: Work Experience at the top
+\sectionTitle{Experiencias}{\faSuitcase}
+%\renewcommand{\labelitemi}{$\bullet$}
+\begin{experiences}
+  
+
+  \experience
+  {Agosto 2021}    {Secretario}{Centro de Estudiantes de Economía}{Ayacucho}
+  {Julio 2020}   {
+                      Fui elegido miembro de Centro de Estudiantes de mi escuela profesional.
+                      \begin{itemize}
+                        \item Secretario   
+                      \end{itemize}
+                    }
+                     {CEE2020, UNSCH}
+   \emptySeparator
+  
+   \experience
+    {Abril 2019} {Secretario de archivos}{Municipalidad Provincial de Cangallo}{Cangallo}
+    {Enero 2019}    {
+                      \begin{itemize}
+                        \item Oficina de archivos 
+                      \end{itemize}
+                    }                 
+                   {MPC}  
+  \emptySeparator
+  
+  \experience
+  {Diciembre 2018}  {Parlamentario Joven}{Congreso de la República}{Ayacucho}
+  {Enero 2018}   {
+                      Parlamentario Joven del año 2018 en representación de la región Ayacucho oportunidad de conocer, experimentar y valorar el trabajo que se realiza en el Parlamento, dentro de un espacio de participación y fomento de valores democráticos. (\href{http://www.nouvo.ch/s-007}{vidéo})  
+                      \begin{itemize}
+                        \item Participación ciudadana                                            
+                      \end{itemize}
+                  }
+                  {PJ2018} 
+                  
+\end{experiences}
+
+
